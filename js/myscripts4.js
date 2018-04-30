@@ -316,12 +316,12 @@ for(i=0; i<eval(class_name+current_display_level).length; i++){
 
 
 
-if(screen.orientation.angle==0) {
-	alert('0')
+if(window.screen.orientation.type==="portrait-primary" || window.screen.orientation.type==="portrait-secondary") {
+	alert('portrait')
 	n=3
 }
 else {
-	alert('90')
+	alert('landscape')
 	n=6
 }
 
