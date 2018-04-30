@@ -114,6 +114,7 @@ function hidelight() {
 /*Перерисовка при смене ориентации*/
 window.addEventListener("orientationchange", function() {
   // Announce the new orientation number
+var port = window.matchMedia('(orientation: portrait)');
   ChangeClass(class_name);
 }, false);
 
