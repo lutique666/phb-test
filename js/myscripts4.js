@@ -334,7 +334,7 @@ for(i=0; i<draw_table.length; i++){
   	}
 }
 
-content += '<p>&nbsp;</p></div></div>'
+content += '<p>&nbsp;</p><p>&nbsp;</p></div></div>'
 
 document.getElementById('table').innerHTML=content
 }
