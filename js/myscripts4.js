@@ -1,4 +1,4 @@
-﻿var level_number = '0'; //Дефолтное значение
+var level_number = '0'; //Дефолтное значение
 var class_name = 'bard'; //Дефолтное значение
 var spellname = document.getElementsByClassName('spellname');
 var des = document.getElementsByClassName('featherlight-inner');
@@ -89,6 +89,12 @@ var wizard9=['Врата (КИ)', 'Заточение (КИ)', 'Исполнен
 
 var table_of_contents = '<a href="Chapter00.html">Введение</a><i>Часть 1: Создание Персонажа</i><a href="Chapter01.html">Глава 1: Создание Персонажа</a><a href="Chapter02.html">Глава 2: Расы</a><a href="Chapter03.html">Глава 3: Классы</a><a href="Chapter04.html">Глава 4: Личность и Предыстория</a><a href="Chapter05.html">Глава 5: Снаряжение</a><a href="Chapter06.html">Глава 6: Индивидуальные Опции</a><a href="Chapter07.html">Глава 7: Использование Характеристик</a> <i>Часть 2: Играя в Игру</i><a href="Chapter08.html">Глава 8: Приключения</a><a href="Chapter09.html">Глава 9: Сражение</a> <i>Часть 3: Правила Магии</i><a href="Chapter10.html">Глава 10: Использование Заклинаний</a><a href="Chapter11gen.html">Глава 11: Заклинания</a><i>Приложения</i><a href="Attachment01.html">Приложение A: Состояния</a><a href="Attachment02.html">Приложение Б: Боги Мультивселенной</a><a href="Attachment03.html">Приложение В: Планы Существования</a><a href="Attachment04.html">Приложение Г: Параметры Существ</a><i>Разное</i><a href="pocket.html">Генератор краж носовых платков</a>'
 
+/*Перерисовка при смене ориентации*/
+window.addEventListener("orientationchange resize", function() {
+  ChangeClass(class_name);
+}, false);
+
+
 /*ПОЖАЛУЙСТА ПОФИКСИТЕ ЭТО*/
 /*Скрытие лайт бокса. */
 function hidelight() {
@@ -111,17 +117,11 @@ function hidelight() {
 }
 
 
-/*Перерисовка при смене ориентации*/
-window.addEventListener("orientationchange", function() {
-  // Announce the new orientation number
-var port = window.matchMedia('(orientation: portrait)');
-  ChangeClass(class_name);
-}, false);
-
 /*И ЭТО. Клик на диве идет сквозь элемент. Для закрытия по клику за пределом описания. При клике на описание, клик проходит сквозь див, но это кастыль это фиксит*/
 function showlight() {
     check = 1
 }
+
 
 
 function openSearch() {
@@ -218,7 +218,6 @@ document.getElementsByClassName('overlay-contentP')[0].innerHTML = table_of_cont
 
 
 
-
 function Content(id) {
 	if (suggestion.style.display == 'block')
     	{
@@ -232,7 +231,6 @@ function Content(id) {
 }
 
 function ChangeClass(classus) {
-
 current_display_class.style.backgroundColor = 'white';
 current_display_class = document.getElementById(classus)
 
@@ -268,6 +266,8 @@ ChangeLevel(level_number);
 
 
 }
+
+
 
 
 
@@ -315,27 +315,23 @@ for(i=0; i<eval(class_name+current_display_level).length; i++){
 }
 
 var port = window.matchMedia('(orientation: portrait)');
-if(port.matches) {
-  for(i=0; i<draw_table.length; i++){
-    if ((i+1) % 3 == 0) {
-  		content += '<div class="TableCell2" onclick=Search(this.innerHTML) ontouch=Search(this.innerHTML)>' + draw_table[i] + '</div></div><div class="TableRow">';
-  	}
-  	else {
-  		content += '<div class="TableCell2" onclick=Search(this.innerHTML) ontouch=Search(this.innerHTML)>' + draw_table[i] + '</div>';
-  	}
-  }
-} else {
-  for(i=0; i<draw_table.length; i++){
-    if ((i+1) % 6 == 0) {
-  		content += '<div class="TableCell2" onclick=Search(this.innerHTML) ontouch=Search(this.innerHTML)>' + draw_table[i] + '</div></div><div class="TableRow">';
-  	}
-  	else {
-  		content += '<div class="TableCell2" onclick=Search(this.innerHTML) ontouch=Search(this.innerHTML)>' + draw_table[i] + '</div>';
-  	}
-  }
+if(screen.orientation.angle=0) {
+	n=3
+}
+else {
+	n=6
 }
 
-content += '</div></div>'
+for(i=0; i<draw_table.length; i++){
+    if ((i+1) % n == 0) {
+  		content += '<div class="TableCell2" onclick=Search(this.innerHTML) ontouch=Search(this.innerHTML)>' + draw_table[i] + '</div></div><div class="TableRow">';
+  	}
+  	else {
+  		content += '<div class="TableCell2" onclick=Search(this.innerHTML) ontouch=Search(this.innerHTML)>' + draw_table[i] + '</div>';
+  	}
+}
+
+content += '<p>&nbsp;</p></div></div>'
 
 document.getElementById('table').innerHTML=content
 }
