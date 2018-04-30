@@ -110,9 +110,12 @@ function hidelight() {
     }
 }
 
+
+/*Перерисовка при смене ориентации*/
 window.addEventListener("orientationchange", function() {
-    alert("the orientation of the device is now " + screen.orientation.angle);
-});
+  // Announce the new orientation number
+  ChangeClass(class_name);
+}, false);
 
 /*И ЭТО. Клик на диве идет сквозь элемент. Для закрытия по клику за пределом описания. При клике на описание, клик проходит сквозь див, но это кастыль это фиксит*/
 function showlight() {
