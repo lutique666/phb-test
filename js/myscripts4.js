@@ -315,7 +315,8 @@ for(i=0; i<eval(class_name+current_display_level).length; i++){
 }
 
 var port = window.matchMedia('(orientation: portrait)');
-if(screen.orientation.angle=0) {
+alert(screen.orientation.angle)
+if(screen.orientation.angle==0) {
 	n=3
 }
 else {
