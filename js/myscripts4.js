@@ -317,11 +317,9 @@ for(i=0; i<eval(class_name+current_display_level).length; i++){
 
 
 if(window.screen.orientation.type==="portrait-primary" || window.screen.orientation.type==="portrait-secondary") {
-	alert('portrait')
 	n=3
 }
 else {
-	alert('landscape')
 	n=6
 }
 
@@ -334,7 +332,7 @@ for(i=0; i<draw_table.length; i++){
   	}
 }
 
-content += '<p>&nbsp;</p><p>&nbsp;</p></div></div>'
+content += '</div></div>'
 
 document.getElementById('table').innerHTML=content
 }
