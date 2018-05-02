@@ -1,4 +1,4 @@
-var level_number = '0'; //Дефолтное значение
+﻿var level_number = '0'; //Дефолтное значение
 var class_name = 'bard'; //Дефолтное значение
 var spellname = document.getElementsByClassName('spellname');
 var des = document.getElementsByClassName('featherlight-inner');
