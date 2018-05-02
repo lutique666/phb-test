@@ -1,4 +1,4 @@
-﻿html, body {
+html, body {
   margin: 0;
 }
 
@@ -318,8 +318,8 @@
   .featherlight-content {
     position: fixed;
     top: 5%;
-    left: 20%;
-    width: 60%;
+    left: 10%;
+    width: 80%;
     height: 90%;
     padding: 5px;
     text-align: left;
