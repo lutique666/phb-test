@@ -1,4 +1,4 @@
-﻿var level_number = '0'; //Дефолтное значение
+var level_number = '0'; //Дефолтное значение
 var class_name = 'bard'; //Дефолтное значение
 var spellname = document.getElementsByClassName('spellname');
 var des = document.getElementsByClassName('featherlight-inner');
@@ -376,35 +376,41 @@ document.getElementById('lightbox').style.display='block'
 
 
 
-function SearchString() {
+function SearchString() 
+{
 //found = 0
 
 document.getElementById('lightbox').style.display='block';
 
 var check=document.getElementById('searchall').checked;
-//var neadlestring = document.getElementById('neadlestring').value.toLowerCase();
-//var neadlestringex = neadlestring[0].substring(0,1).toUpperCase() + neadlestring.slice(1)
+var neadlestring = document.getElementById('neadlestring').value.toLowerCase();
+var neadlestringex = neadlestring[0].substring(0,1).toUpperCase() + neadlestring.slice(1)
 
 //replaceser = '<span>'+neadlestring+'</span>';
 //replaceser2 = '<span>'+neadlestringex+'</span>';
 
 for (var i=0; i<des.length; i++)
 {
-new_string = des[i].innerHTML
+//new_string = des[i].innerHTML
 
 
 if (check === true) {
-  if ((des[i].innerHTML.indexOf(neadlestring.toUpperCase()) >= 0) || (des[i].innerHTML.indexOf(neadlestring) >= 0) || (des[i].innerHTML.indexOf(neadlestringex) >= 0))  {
+ 
+if ((des[i].innerHTML.indexOf(neadlestring.toUpperCase()) >= 0) || (des[i].innerHTML.indexOf(neadlestring) >= 0) || (des[i].innerHTML.indexOf(neadlestringex) >= 0))  
+{
 //	var new_string=new_string.replace(new RegExp(neadlestring, 'g'), replaceser);
 //	var new_string=new_string.replace(new RegExp(neadlestringex, 'g'), replaceser2);
 //  var new_string=new_string.replace(neadlestring.toUpperCase(), '<span>'+neadlestring.toUpperCase()+'</span>');
     des[i].style.display = 'block';
     found.push(i)
-  }
-  else {
+}
+
+else 
+{
     des[i].style.display = 'none';
-  }
-  	des[i].innerHTML=new_string;
+}
+
+// 	des[i].innerHTML=new_string;
 }
 
 else {
@@ -433,5 +439,5 @@ if (found.length == 0)
 else
 	{
 		document.getElementById("nothing").style.display="none";
-}
+	}
 }
