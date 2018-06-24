@@ -94,9 +94,7 @@ var source_check = localStorage['storedsource'] || ["КИ", "РКпВ"];
 var arr
 var json_str
 //Мусор
-var arr = ['foo', 'bar', 'baz'];
-var json_str = JSON.stringify(arr);
-createCookie('favourite', json_str);
+
 
 
 //Загрузка страницы получение куков
