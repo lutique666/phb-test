@@ -92,7 +92,7 @@ var source_check = localStorage['storedsource'] || ["КИ", "РКпВ"];
 
 //объявленные переменные для куков
 var arr = [];
-var json_str
+var json_str = [];
 //Мусор
 
 
@@ -356,8 +356,8 @@ document.getElementsByClassName('overlay-content')[0].innerHTML = table_of_conte
 document.getElementsByClassName('overlay-contentP')[0].innerHTML = table_of_contents;
 
 //Получение массива из куков
-var json_str =  getCookie('favourite') || [];
-var arr = JSON.parse(json_str);
+json_str =  getCookie('favourite') || [];
+arr = JSON.parse(json_str);
 console.log(arr)
 
 
@@ -569,7 +569,7 @@ else {
 
 //Запихиваем в избранное
 arr.push(neadle)
-var json_str = JSON.stringify(arr);
+json_str = JSON.stringify(arr);
 createCookie('favourite', json_str);
 //Избранное
 
