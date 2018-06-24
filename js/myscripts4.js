@@ -356,9 +356,8 @@ document.getElementsByClassName('overlay-content')[0].innerHTML = table_of_conte
 document.getElementsByClassName('overlay-contentP')[0].innerHTML = table_of_contents;
 
 //Получение массива из куков
-var json_str =  getCookie('favourite');
-console.log(json_str)
-var arr = JSON.parse(json_str) || ['Щит (КИ)'];
+var json_str =  getCookie('favourite') || [];
+var arr = JSON.parse(json_str);
 console.log(arr)
 
 
