@@ -141,28 +141,12 @@ function getCookie(c_name) {
 
 //Функция для избранного
 function displayCookies() {
-current_display_class.style.backgroundColor = 'orange';
-level_number = levelus
-
 
 document.getElementsByClassName('circle')[current_display_level].style.backgroundColor = 'white';
 document.getElementsByClassName('circle2')[current_display_level].style.backgroundColor = 'white';
+document.getElementById('long19').style.display='none';
+document.getElementById('shrt15').style.display='none';
 
-
-current_display_level = Number(level_number)
-
-if (class_name == 'paladin' || class_name == 'ranger')
-{
-    document.getElementById('long19').style.display='none';
-    document.getElementById('shrt15').style.display='block';
-    document.getElementsByClassName('circle2')[current_display_level].style.backgroundColor = 'orange';
-}
-else
-{
-    document.getElementById('shrt15').style.display='none';
-    document.getElementById('long19').style.display='block';
-    document.getElementsByClassName('circle')[current_display_level].style.backgroundColor = 'orange';
-}
 
 //console.log(eval(class_name+current_display_level))
 
