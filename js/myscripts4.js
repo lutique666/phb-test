@@ -93,7 +93,8 @@ var source_check = localStorage['storedsource'] || ["КИ", "РКпВ"];
 //объявленные переменные для куков
 var arr = [];
 var json_str = [];
-//Мусор
+//Сердечки
+var favourite = document.getElementsByClassName('favourite');
 
 
 
@@ -105,6 +106,28 @@ var table_of_contents = '<a href="Chapter00.html">Введение</a><i>Час�
 window.addEventListener("orientationchange", function() {
   ChangeClass(class_name);
 }, false);
+
+
+function addFavourite (heart) {
+
+if (heart.src.match("img/heart.png")) 
+{
+//Запихиваем в избранное
+arr.push(spellname[heart.id].innerHTML)
+json_str = JSON.stringify(arr);
+createCookie('favourite', json_str);
+heart.src='img/heartfull.png'
+//Избранное
+}
+else
+{
+	arr.splice([(arr.indexOf(spellname[heart.id].innerHTML))], 1)
+	json_str = JSON.stringify(arr);
+	createCookie('favourite', json_str);
+	heart.src='img/heart.png'
+}
+
+}
 
 
 //Функция создания печенек
@@ -356,11 +379,24 @@ document.getElementsByClassName('overlay-content')[0].innerHTML = table_of_conte
 document.getElementsByClassName('overlay-contentP')[0].innerHTML = table_of_contents;
 
 //Получение массива из куков
-json_str =  getCookie('favourite') || [];
-arr = JSON.parse(json_str);
-console.log(arr)
+json_str =  getCookie('favourite');
+arr = JSON.parse(json_str) || [];
 
 
+//Проставляем сердечки. Просматриваем массив arr и ищем его в массиве спеллнеймов
+	for (i=0; i<arr.length; i++)
+	{
+		for (j=0; j<spellname.length; j++)
+		{
+			if (arr[i]==spellname[j].innerHTML)
+			{
+				console.log(arr[i])
+				console.log(spellname[j].innerHTML)
+				favourite[j].src='img/heartfull.png'
+			}
+		}
+	}
+//
 
 //Вспоминалка источников, проставляет галочки в настройках
 for (i=0; i<source_class.length; i++) {
@@ -567,11 +603,7 @@ if (html == undefined)
 else {
 }
 
-//Запихиваем в избранное
-arr.push(neadle)
-json_str = JSON.stringify(arr);
-createCookie('favourite', json_str);
-//Избранное
+
 
 for (var i=0; i<spellname.length; i++) {
 
