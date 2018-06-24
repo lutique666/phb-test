@@ -89,10 +89,17 @@ var wizard8=['Антипатия/симпатия (КИ)', 'Власть над 
 var wizard9=['Врата (КИ)', 'Заточение (КИ)', 'Исполнение желаний (КИ)', 'Истинное Превращение (КИ)', 'Метеоритный дождь (КИ)', 'Остановка времени (КИ)', 'Полное Превращение (КИ)', 'Предвидение (КИ)', 'Проекция в астрал (КИ)', 'Радужная стена (КИ)', 'Слово Силы: смерть (КИ)', 'Смертный ужас (КИ)', 'Множественное Превращение (РКпВ)', 'Неуязвимость (РКпВ)', 'Психический Крик (РКпВ)', 'Истощение жизни (КТЧ)', 'Кристальное копьё души (DS)', 'Изменить зверя* (ТЗ)']
 var source_check = localStorage['storedsource'] || ["КИ", "РКпВ"];
 // only strings
+
+//объявленные переменные для куков
+var arr
+var json_str
+//Мусор
 var arr = ['foo', 'bar', 'baz'];
 var json_str = JSON.stringify(arr);
-createCookie('mycookie', json_str);
+createCookie('favourite', json_str);
 
+
+//Загрузка страницы получение куков
 
 var table_of_contents = '<a href="Chapter00.html">Введение</a><i>Часть 1: Создание Персонажа</i><a href="Chapter01.html">Глава 1: Создание Персонажа</a><a href="Chapter02.html">Глава 2: Расы</a><a href="Chapter03.html">Глава 3: Классы</a><a href="Chapter04.html">Глава 4: Личность и Предыстория</a><a href="Chapter05.html">Глава 5: Снаряжение</a><a href="Chapter06.html">Глава 6: Индивидуальные Опции</a><a href="Chapter07.html">Глава 7: Использование Характеристик</a> <i>Часть 2: Играя в Игру</i><a href="Chapter08.html">Глава 8: Приключения</a><a href="Chapter09.html">Глава 9: Сражение</a> <i>Часть 3: Правила Магии</i><a href="Chapter10.html">Глава 10: Использование Заклинаний</a><a href="Chapter11gen.html">Глава 11: Заклинания</a><i>Приложения</i><a href="Attachment01.html">Приложение A: Состояния</a><a href="Attachment02.html">Приложение Б: Боги Мультивселенной</a><a href="Attachment03.html">Приложение В: Планы Существования</a><a href="Attachment04.html">Приложение Г: Параметры Существ</a><i>Разное</i><a href="pocket.html">Генератор краж носовых платков</a>'
 
@@ -101,6 +108,8 @@ window.addEventListener("orientationchange", function() {
   ChangeClass(class_name);
 }, false);
 
+
+//Функция создания печенек
 function createCookie(name, value, days) {
     var expires;
     if (days) {
@@ -114,6 +123,7 @@ function createCookie(name, value, days) {
     document.cookie = name + "=" + value + expires + "; path=/";
 }
 
+//Функция получения печенек
 function getCookie(c_name) {
     if (document.cookie.length > 0) {
         c_start = document.cookie.indexOf(c_name + "=");
@@ -129,10 +139,104 @@ function getCookie(c_name) {
     return "";
 }
 
+//Функция для избранного
 function displayCookies() {
-var json_str = getCookie('mycookie');
-var arr = JSON.parse(json_str);
-console.log(arr)
+current_display_class.style.backgroundColor = 'orange';
+level_number = levelus
+
+
+document.getElementsByClassName('circle')[current_display_level].style.backgroundColor = 'white';
+document.getElementsByClassName('circle2')[current_display_level].style.backgroundColor = 'white';
+
+
+current_display_level = Number(level_number)
+
+if (class_name == 'paladin' || class_name == 'ranger')
+{
+    document.getElementById('long19').style.display='none';
+    document.getElementById('shrt15').style.display='block';
+    document.getElementsByClassName('circle2')[current_display_level].style.backgroundColor = 'orange';
+}
+else
+{
+    document.getElementById('shrt15').style.display='none';
+    document.getElementById('long19').style.display='block';
+    document.getElementsByClassName('circle')[current_display_level].style.backgroundColor = 'orange';
+}
+
+//console.log(eval(class_name+current_display_level))
+
+
+var content = '<div class="TableBody"><div class="TableRow">'
+draw_table = []
+draw_table2 = []
+for(i=0; i<eval(arr).length; i++){
+
+			draw_table.push(eval(arr)[i]);
+}
+
+
+
+if(window.screen.orientation.type==="portrait-primary" || window.screen.orientation.type==="portrait-secondary") {
+	var n=3
+}
+else {
+	var n=6
+}
+
+
+/*Ебанутая хуйня*/
+
+var rows = Math.floor(draw_table.length / n)
+var ostatok = draw_table.length % n
+for (i=1; i<=ostatok; i++)
+{
+	draw_table2.push(draw_table[(rows+1)*i-1]);
+}
+
+for (i=0; i<draw_table2.length; i++)
+{
+	draw_table.splice(draw_table.indexOf(draw_table2[i]), 1);
+}
+
+var k=0
+var l=k
+for (i=0; i<rows; i++) {
+
+	for (j=0; j<n; j++)
+	{
+		if (l<draw_table.length) {
+		content += '<div class="TableCell2" onclick=Search(this.innerHTML) ontouch=Search(this.innerHTML)>' + draw_table[l] + '</div>';
+		l=l+rows
+		}
+
+	}
+	content += '</div><div class="TableRow">';
+k=k+1
+var l=k
+}
+
+for (i=0; i<draw_table2.length; i++)
+{
+content += '<div class="TableCell2" onclick=Search(this.innerHTML) ontouch=Search(this.innerHTML)>' + draw_table2[i] + '</div>';
+}
+
+content += '</div><div class="TableRow">';
+/*Ебанутая хуйня*/
+
+//Отрисовка по строкам. 
+//for(i=0; i<draw_table.length; i++){
+//   if ((i+1) % n == 0) {
+//  		content += '<div class="TableCell2" onclick=Search(this.innerHTML) ontouch=Search(this.innerHTML)>' + draw_table[i] + '</div></div><div class="TableRow">';
+//  	}
+//  	else {
+//  		content += '<div class="TableCell2" onclick=Search(this.innerHTML) ontouch=Search(this.innerHTML)>' + draw_table[i] + '</div>';
+//  	}
+//}
+
+content += '</div></div>'
+
+document.getElementById('table').innerHTML=content
 }
 
 
@@ -269,6 +373,13 @@ current_display_class = document.getElementById(class_name);
 document.getElementsByClassName('overlay-content')[0].innerHTML = table_of_contents;
 document.getElementsByClassName('overlay-contentP')[0].innerHTML = table_of_contents;
 
+//Получение массива из куков
+var json_str =  getCookie('favourite');
+var arr = JSON.parse(json_str) || [];
+console.log(arr)
+
+
+
 //Вспоминалка источников, проставляет галочки в настройках
 for (i=0; i<source_class.length; i++) {
 		if (source_check.indexOf(source_class[i].value) >= 0) 
@@ -292,6 +403,7 @@ for (i=0; i<source_class.length; i++) {
 		source_check.push(source_class[i].value);
 	}
 	}
+
 }
 
 
@@ -334,6 +446,7 @@ if (classus == 'paladin' || classus == 'ranger')
       level_number = '1';
     }
 }
+
 else
 {
 
@@ -471,6 +584,12 @@ if (html == undefined)
 }
 else {
 }
+
+//Запихиваем в избранное
+arr.push(neadle)
+var json_str = JSON.stringify(arr);
+createCookie('favourite', json_str);
+//Избранное
 
 for (var i=0; i<spellname.length; i++) {
 
