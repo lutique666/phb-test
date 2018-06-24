@@ -91,7 +91,7 @@ var source_check = localStorage['storedsource'] || ["КИ", "РКпВ"];
 // only strings
 
 //объявленные переменные для куков
-var arr
+var arr = [];
 var json_str
 //Мусор
 
