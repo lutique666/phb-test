@@ -194,7 +194,7 @@ function getCookie(c_name) {
     return "";
 }
 
-//Функция для избранного
+/*Функция для избранного
 function displayCookies() {
 
 document.getElementsByClassName('circle')[current_display_level].style.backgroundColor = 'white';
@@ -224,7 +224,7 @@ else {
 }
 
 
-/*Ебанутая хуйня*/
+
 
 var rows = Math.floor(draw_table.length / n)
 var ostatok = draw_table.length % n
@@ -261,7 +261,7 @@ content += '<div class="TableCell2" onclick=Search(this.innerHTML) ontouch=Searc
 }
 
 content += '</div><div class="TableRow">';
-/*Ебанутая хуйня*/
+
 
 //Отрисовка по строкам. 
 //for(i=0; i<draw_table.length; i++){
@@ -277,7 +277,7 @@ content += '</div></div>'
 
 document.getElementById('table').innerHTML=content
 }
-
+*/
 
 
 /*ПОЖАЛУЙСТА ПОФИКСИТЕ ЭТО*/
