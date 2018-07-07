@@ -414,8 +414,49 @@ for (n=0; n<10; n++)
 {
 json_str =  getCookie('favourite'+n);
 
-//concat используется потому что равно не работает.
-eval('arr'+n).concat(JSON.parse(json_str));
+
+//Охуительный кастыль, потому что eval('arr'+n)=JSON.parse(json_str) не работает ни с равно, ни с конкатом
+if (n == 0) 
+{
+	arr0 = JSON.parse(json_str) || [];
+}
+else if (n == 1) 
+{
+	arr1 = JSON.parse(json_str) || [];
+}
+else if (n == 2) 
+{
+	arr2 = JSON.parse(json_str) || [];
+}
+else if (n == 3) 
+{
+	arr3 = JSON.parse(json_str) || [];
+}
+else if (n == 4) 
+{
+	arr4 = JSON.parse(json_str) || [];
+}
+else if (n == 5) 
+{
+	arr5 = JSON.parse(json_str) || [];
+}
+else if (n == 6) 
+{
+	arr6 = JSON.parse(json_str) || [];
+}
+else if (n == 7) 
+{
+	arr7 = JSON.parse(json_str) || [];
+}
+else if (n == 8) 
+{
+	arr8 = JSON.parse(json_str) || [];
+}
+else
+{
+	arr9 = JSON.parse(json_str) || [];
+}
+
 
 
 //Проставляем сердечки. Просматриваем массив arr и ищем его в массиве спеллнеймов
