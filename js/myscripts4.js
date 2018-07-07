@@ -417,7 +417,8 @@ for (n=0; n<10; n++)
 {
 json_str =  getCookie('favourite'+n);
 
-eval('arr'+n) = JSON.parse(json_str) || [];
+//concat используется потому что равно не работает.
+eval('arr'+n).concat(JSON.parse(json_str));
 
 
 //Проставляем сердечки. Просматриваем массив arr и ищем его в массиве спеллнеймов
