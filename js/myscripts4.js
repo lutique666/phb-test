@@ -145,20 +145,17 @@ else
 if (heart.src.match("img/heart.png")) 
 {
 eval('arr'+l).push(spellname[heart.id].innerHTML);
-json_str = JSON.stringify(eval('arr'+l));
-createCookie('favourite'+l, json_str);
 heart.src='img/heartfull.png'
 //Избранное
 }
 else
 {
 	eval('arr'+l).splice([(eval('arr'+l).indexOf(spellname[heart.id].innerHTML))], 1)
-	json_str = JSON.stringify(eval('arr'+l));
-	createCookie('favourite'+l, json_str);
 	heart.src='img/heart.png'
 }
 
-
+json_str = JSON.stringify(eval('arr'+l));
+createCookie('favourite'+l, json_str, 30);
 
 
 }
