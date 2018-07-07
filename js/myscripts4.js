@@ -89,9 +89,23 @@ var wizard8=['Антипатия/симпатия (КИ)', 'Власть над 
 var wizard9=['Врата (КИ)', 'Заточение (КИ)', 'Исполнение желаний (КИ)', 'Истинное Превращение (КИ)', 'Метеоритный дождь (КИ)', 'Остановка времени (КИ)', 'Полное Превращение (КИ)', 'Предвидение (КИ)', 'Проекция в астрал (КИ)', 'Радужная стена (КИ)', 'Слово Силы: смерть (КИ)', 'Смертный ужас (КИ)', 'Множественное Превращение (РКпВ)', 'Неуязвимость (РКпВ)', 'Психический Крик (РКпВ)', 'Истощение жизни (КТЧ)', 'Кристальное копьё души (DS)', 'Изменить зверя* (ТЗ)']
 var source_check = localStorage['storedsource'] || ["КИ", "РКпВ"];
 // only strings
+//Переменная в которой будем искать уровень спелла
+var h3 = document.getElementsByTagName('h3')
+//Вспомогательная переменная для определение уровня спелла
+var l
 
 //объявленные переменные для куков
-var arr = [];
+var arr0 = [];
+var arr1 = [];
+var arr2 = [];
+var arr3 = [];
+var arr4 = [];
+var arr5 = [];
+var arr6 = [];
+var arr7 = [];
+var arr8 = [];
+var arr9 = [];
+
 var json_str = [];
 //Сердечки
 var favourite = document.getElementsByClassName('favourite');
@@ -110,22 +124,42 @@ window.addEventListener("orientationchange", function() {
 
 function addFavourite (heart) {
 
+//Запихиваем в избранное
+
+//Внутри тега h3 проставлены уровни спеллов и школы
+//Берем в иннерхтмле только первый символ
+//Это и будет уровнем.
+//Если 'З' / заговор - то уровень 0-й
+//eval('arr'+l) - эквивален одного из 10 имен массивов arr
+if ((h3[heart.id].innerHTML[0]=='З') || (h3[heart.id].innerHTML[0]=='з'))
+{
+	var l = 0;
+}
+else
+{
+	var l = h3[heart.id].innerHTML[0].toString();
+}
+
+
+//Проверяем какое сердце жмем. При пустом заполняем массив, при полном удаляем
 if (heart.src.match("img/heart.png")) 
 {
-//Запихиваем в избранное
-arr.push(spellname[heart.id].innerHTML)
-json_str = JSON.stringify(arr);
-createCookie('favourite', json_str);
+eval('arr'+l).push(spellname[heart.id].innerHTML);
+json_str = JSON.stringify(eval('arr'+l));
+createCookie('favourite'+l, json_str);
 heart.src='img/heartfull.png'
 //Избранное
 }
 else
 {
-	arr.splice([(arr.indexOf(spellname[heart.id].innerHTML))], 1)
-	json_str = JSON.stringify(arr);
-	createCookie('favourite', json_str);
+	eval('arr'+l).splice([(eval('arr'+l).indexOf(spellname[heart.id].innerHTML))], 1)
+	json_str = JSON.stringify(eval('arr'+l));
+	createCookie('favourite'+l, json_str);
 	heart.src='img/heart.png'
 }
+
+
+
 
 }
 
@@ -370,7 +404,7 @@ function closeSetP() {
 
 
 
-function pagename() {
+function pageload() {
 
 current_display_table = document.getElementById(class_name+level_number+'Table');
 current_display_spell = document.getElementsByClassName('spellname')[0];
@@ -379,7 +413,10 @@ document.getElementsByClassName('overlay-content')[0].innerHTML = table_of_conte
 document.getElementsByClassName('overlay-contentP')[0].innerHTML = table_of_contents;
 
 //Получение массива из куков
-json_str =  getCookie('favourite');
+for (n=0; n<10; n++)
+{
+json_str =  getCookie('favourite'+n);
+
 arr = JSON.parse(json_str) || [];
 
 
@@ -396,6 +433,7 @@ arr = JSON.parse(json_str) || [];
 			}
 		}
 	}
+}
 //
 
 //Вспоминалка источников, проставляет галочки в настройках
