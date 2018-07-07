@@ -417,18 +417,16 @@ for (n=0; n<10; n++)
 {
 json_str =  getCookie('favourite'+n);
 
-arr = JSON.parse(json_str) || [];
+eval('arr'+n) = JSON.parse(json_str) || [];
 
 
 //Проставляем сердечки. Просматриваем массив arr и ищем его в массиве спеллнеймов
-	for (i=0; i<arr.length; i++)
+	for (i=0; i<eval('arr'+n).length; i++)
 	{
 		for (j=0; j<spellname.length; j++)
 		{
-			if (arr[i]==spellname[j].innerHTML)
+			if (eval('arr'+n)[i]==spellname[j].innerHTML)
 			{
-				console.log(arr[i])
-				console.log(spellname[j].innerHTML)
 				favourite[j].src='img/heartfull.png'
 			}
 		}
