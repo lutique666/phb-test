@@ -37,7 +37,7 @@
   .spellCell {
     flex: 1 1 auto;
     padding: 3px 3px;
-    font-size: 19px;
+    font-size: 18px;
   }
   .TableCell2 {
     width:15em;
@@ -69,7 +69,7 @@
   margin: 0 auto;
   top: 1em;
   font-family: Ubuntu Mono;
-  font-size: 19px;
+  font-size: 18px;
   width: 90%;
   height: auto;
   text-align: center;
