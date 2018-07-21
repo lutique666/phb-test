@@ -331,8 +331,17 @@ document.getElementsByClassName('overlay-content')[0].innerHTML = table_of_conte
 document.getElementsByClassName('overlay-contentP')[0].innerHTML = table_of_contents;
 
 
+//Чтение выделенных сурсов. При первом открытии или открытии локально будет пустым и забьется дефолтным ксанатаром и КИ
 	json_str =  getCookie('storedsource');
-	source_check = JSON.parse(json_str) || ["КИ", "РКпВ"];
+	if ((json_str == undefined) || (json_str==""))
+	{
+		source_check=["КИ", "РКпВ"]
+	}
+	else
+	{
+		source_check = JSON.parse(json_str)
+	}
+
 
 //Вспоминалка источников, проставляет галочки в настройках
 for (i=0; i<source_class.length; i++) {
@@ -647,16 +656,27 @@ else {
 
 
 
-clvl=document.getElementById('clvl').value; //Выборка уровня в выпадающем списке
-cschool=document.getElementById('cschool').value; //Выборка школы в выпадающем списке
-cname=document.getElementById('cname').value; //Выборка класса в выпадающем списке
-//Дописать остальные селекторы
-//школа магии
-//уровень
-//Время накладывания
+var clvl=document.getElementById('clvl').value; //Выборка уровня в выпадающем списке
+var cschool1=document.getElementById('cschool1').value; //Выборка школы1 в выпадающем списке
+var cschool2=document.getElementById('cschool2').value; //Выборка школы2 в выпадающем списке
+var cname=document.getElementById('cname').value; //Выборка класса в выпадающем списке
+var ctime=document.getElementById('ctime').value; //Выборка времени каста в выпадающем списке
+var ccomp=document.getElementById('ccomp').value; //Выборка компонентов в выпадающем списке
+
+if ((cschool1 == "") && (cschool2 != ""))
+{
+	cschool1 = cschool2
+}
+
+else if ((cschool2 == "") && (cschool1 != ""))
+{
+	cschool2 = cschool1
+}
+
+
 //Концентрация (?)
 //Компоненты (?)
-//Дистанция (?)
+//Дистанция (?) наверное нет
 //replaceser = '<span>'+neadlestring+'</span>';
 //replaceser2 = '<span>'+neadlestringex+'</span>';
 
@@ -667,7 +687,7 @@ for (var i=0; i<des.length; i++)
 
 if (check === true) {
  
-if (((des[i].innerHTML.indexOf(neadlestring.toUpperCase()) >= 0) || (des[i].innerHTML.indexOf(neadlestring) >= 0) || (des[i].innerHTML.indexOf(neadlestringex) >= 0)) && (des[i].innerHTML.indexOf(clvl) >=0) && (des[i].innerHTML.indexOf(cschool) >=0) && (des[i].innerHTML.indexOf(cname) >=0)) 
+if (((des[i].innerHTML.indexOf(neadlestring.toUpperCase()) >= 0) || (des[i].innerHTML.indexOf(neadlestring) >= 0) || (des[i].innerHTML.indexOf(neadlestringex) >= 0)) && (des[i].innerHTML.indexOf(clvl) >=0) && ((des[i].innerHTML.indexOf(cschool1) >=0) || (des[i].innerHTML.indexOf(cschool2) >=0)) && (des[i].innerHTML.indexOf(ctime) >=0) && (des[i].innerHTML.indexOf(ccomp) >=0) && (des[i].innerHTML.indexOf(cname) >=0)) 
 {
 //	var new_string=new_string.replace(new RegExp(neadlestring, 'g'), replaceser);
 //	var new_string=new_string.replace(new RegExp(neadlestringex, 'g'), replaceser2);
@@ -698,7 +718,7 @@ else {
   else  {
     des[i].style.display = 'none';
   }
-}
+}1
 }
 }
 
