@@ -665,6 +665,7 @@ var ccomp=document.getElementById('ccomp').value; //Выборка компон�
 var cduration=document.getElementById('cduration').value; //Выборка компонентов в выпадающем списке
 
 
+//На случай если одна из школ пуста
 if ((cschool1 == "") && (cschool2 != ""))
 {
 	cschool1 = cschool2
@@ -691,8 +692,31 @@ if (check === true) {
 
 if (cduration != "1") //спелл с концентрацией или мгновенный
 {
-if (((des[i].innerHTML.indexOf(neadlestring.toUpperCase()) >= 0) || (des[i].innerHTML.indexOf(neadlestring) >= 0) || (des[i].innerHTML.indexOf(neadlestringex) >= 0)) && (des[i].innerHTML.indexOf(clvl) >=0) && ((des[i].innerHTML.indexOf(cschool1) >=0) || (des[i].innerHTML.indexOf(cschool2) >=0)) && (des[i].innerHTML.indexOf(ctime) >=0) && (des[i].innerHTML.indexOf(ccomp) >=0) && (des[i].innerHTML.indexOf(cduration) >=0) && (des[i].innerHTML.indexOf(cname) >=0)) 
+if (((des[i].innerHTML.indexOf(neadlestring.toUpperCase()) >= 0) || (des[i].innerHTML.indexOf(neadlestring) >= 0) || (des[i].innerHTML.indexOf(neadlestringex) >= 0)) && (h3[i].innerHTML.indexOf(clvl) >=0) && ((h3[i].innerHTML.indexOf(cschool1) >=0) || (h3[i].innerHTML.indexOf(cschool2) >=0)) && ((des[i].innerHTML.indexOf(ctime) <= des[i].innerHTML.indexOf('<b>Время')+60) && des[i].innerHTML.indexOf(ctime) >= 0) && (des[i].innerHTML.indexOf(ccomp) >=0) && (des[i].innerHTML.indexOf(cduration) >=0) && (des[i].innerHTML.indexOf(cname) >=0)) 
 {
+/*(des[i].innerHTML.indexOf(neadlestring.toUpperCase()) >= 0) || (des[i].innerHTML.indexOf(neadlestring) >= 0) || (des[i].innerHTML.indexOf(neadlestringex) >= 0)
+Основная поисковая строка, ищется по всем регистрам в полном тексте спелла des[i]
+*/
+
+/*(des[i].innerHTML.indexOf(clvl) >=0)
+Ищем уровень спелла в h3 (Уровень спелла и школа)
+*/
+
+/*((h3[i].innerHTML.indexOf(cschool1) >=0) || (h3[i].innerHTML.indexOf(cschool2) >=0))
+Одна или другая школа
+*/
+
+/*((des[i].innerHTML.indexOf(ctime) <= des[i].innerHTML.indexOf('<b>Время')+60) && des[i].innerHTML.indexOf(ctime) >= 0)
+Добавлено чтобы выборка шла и со спеллов где время активации варьируется типа <p><b>Время накладывания:</b> 1 действие или 8 часов</p>
+*/
+
+
+/*(des[i].innerHTML.indexOf(ccomp) >=0) 
+(des[i].innerHTML.indexOf(cduration) >=0) 
+(des[i].innerHTML.indexOf(cname) >=0)
+Выборка по компонентам, длительности, названию класса
+*/
+
 //	var new_string=new_string.replace(new RegExp(neadlestring, 'g'), replaceser);
 //	var new_string=new_string.replace(new RegExp(neadlestringex, 'g'), replaceser2);
 //  var new_string=new_string.replace(neadlestring.toUpperCase(), '<span>'+neadlestring.toUpperCase()+'</span>');
@@ -707,11 +731,16 @@ else
 
 else //Длительный спелл без концентрации || (des[i].innerHTML.indexOf('Мгновенная') < 0)
 {
-if (((des[i].innerHTML.indexOf(neadlestring.toUpperCase()) >= 0) || (des[i].innerHTML.indexOf(neadlestring) >= 0) || (des[i].innerHTML.indexOf(neadlestringex) >= 0)) && (des[i].innerHTML.indexOf(clvl) >=0) && ((des[i].innerHTML.indexOf(cschool1) >=0) || (des[i].innerHTML.indexOf(cschool2) >=0)) && (des[i].innerHTML.indexOf(ctime) >=0) && (des[i].innerHTML.indexOf(ccomp) >=0) && (des[i].innerHTML.indexOf('Концентрация') < 0) && (des[i].innerHTML.indexOf('Мгновенная') < 0) && (des[i].innerHTML.indexOf(cname) >=0)) 
+if (((des[i].innerHTML.indexOf(neadlestring.toUpperCase()) >= 0) || (des[i].innerHTML.indexOf(neadlestring) >= 0) || (des[i].innerHTML.indexOf(neadlestringex) >= 0)) && (h3[i].innerHTML.indexOf(clvl) >=0) && ((h3[i].innerHTML.indexOf(cschool1) >=0) || (h3[i].innerHTML.indexOf(cschool2) >=0)) && ((des[i].innerHTML.indexOf(ctime) <= des[i].innerHTML.indexOf('<b>Время')+60) && des[i].innerHTML.indexOf(ctime) >= 0) && (des[i].innerHTML.indexOf(ccomp) >=0) && ((des[i].innerHTML.indexOf('Концентрация') < 0) && (des[i].innerHTML.indexOf('Мгновенная') < 0) || ((des[i].innerHTML.indexOf('Мгновенная или') >= 0))) && (des[i].innerHTML.indexOf(cname) >=0)) 
 {
 //	var new_string=new_string.replace(new RegExp(neadlestring, 'g'), replaceser);
 //	var new_string=new_string.replace(new RegExp(neadlestringex, 'g'), replaceser2);
 //  var new_string=new_string.replace(neadlestring.toUpperCase(), '<span>'+neadlestring.toUpperCase()+'</span>');
+
+/*((des[i].innerHTML.indexOf('Концентрация') < 0) && (des[i].innerHTML.indexOf('Мгновенная') < 0) || ((des[i].innerHTML.indexOf('Мгновенная или') >= 0)))
+Отличие от выборки выше: при cduration = "1" выполняется именно он. Ищем спелл, где длительность либо без концентрации, либо доступна не мгновенная активация
+*/
+
     des[i].style.display = 'block';
     found.push(i)
 }
