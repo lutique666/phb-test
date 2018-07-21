@@ -662,6 +662,8 @@ var cschool2=document.getElementById('cschool2').value; //Выборка шко�
 var cname=document.getElementById('cname').value; //Выборка класса в выпадающем списке
 var ctime=document.getElementById('ctime').value; //Выборка времени каста в выпадающем списке
 var ccomp=document.getElementById('ccomp').value; //Выборка компонентов в выпадающем списке
+var cduration=document.getElementById('cduration').value; //Выборка компонентов в выпадающем списке
+
 
 if ((cschool1 == "") && (cschool2 != ""))
 {
@@ -686,8 +688,10 @@ for (var i=0; i<des.length; i++)
 
 
 if (check === true) {
- 
-if (((des[i].innerHTML.indexOf(neadlestring.toUpperCase()) >= 0) || (des[i].innerHTML.indexOf(neadlestring) >= 0) || (des[i].innerHTML.indexOf(neadlestringex) >= 0)) && (des[i].innerHTML.indexOf(clvl) >=0) && ((des[i].innerHTML.indexOf(cschool1) >=0) || (des[i].innerHTML.indexOf(cschool2) >=0)) && (des[i].innerHTML.indexOf(ctime) >=0) && (des[i].innerHTML.indexOf(ccomp) >=0) && (des[i].innerHTML.indexOf(cname) >=0)) 
+
+if (cduration != "1") //спелл с концентрацией или мгновенный
+{
+if (((des[i].innerHTML.indexOf(neadlestring.toUpperCase()) >= 0) || (des[i].innerHTML.indexOf(neadlestring) >= 0) || (des[i].innerHTML.indexOf(neadlestringex) >= 0)) && (des[i].innerHTML.indexOf(clvl) >=0) && ((des[i].innerHTML.indexOf(cschool1) >=0) || (des[i].innerHTML.indexOf(cschool2) >=0)) && (des[i].innerHTML.indexOf(ctime) >=0) && (des[i].innerHTML.indexOf(ccomp) >=0) && (des[i].innerHTML.indexOf(cduration) >=0) && (des[i].innerHTML.indexOf(cname) >=0)) 
 {
 //	var new_string=new_string.replace(new RegExp(neadlestring, 'g'), replaceser);
 //	var new_string=new_string.replace(new RegExp(neadlestringex, 'g'), replaceser2);
@@ -695,11 +699,30 @@ if (((des[i].innerHTML.indexOf(neadlestring.toUpperCase()) >= 0) || (des[i].inne
     des[i].style.display = 'block';
     found.push(i)
 }
-
 else 
 {
     des[i].style.display = 'none';
 }
+}
+
+else //Длительный спелл без концентрации || (des[i].innerHTML.indexOf('Мгновенная') < 0)
+{
+if (((des[i].innerHTML.indexOf(neadlestring.toUpperCase()) >= 0) || (des[i].innerHTML.indexOf(neadlestring) >= 0) || (des[i].innerHTML.indexOf(neadlestringex) >= 0)) && (des[i].innerHTML.indexOf(clvl) >=0) && ((des[i].innerHTML.indexOf(cschool1) >=0) || (des[i].innerHTML.indexOf(cschool2) >=0)) && (des[i].innerHTML.indexOf(ctime) >=0) && (des[i].innerHTML.indexOf(ccomp) >=0) && (des[i].innerHTML.indexOf('Концентрация') < 0) && (des[i].innerHTML.indexOf('Мгновенная') < 0) && (des[i].innerHTML.indexOf(cname) >=0)) 
+{
+//	var new_string=new_string.replace(new RegExp(neadlestring, 'g'), replaceser);
+//	var new_string=new_string.replace(new RegExp(neadlestringex, 'g'), replaceser2);
+//  var new_string=new_string.replace(neadlestring.toUpperCase(), '<span>'+neadlestring.toUpperCase()+'</span>');
+    des[i].style.display = 'block';
+    found.push(i)
+}
+else 
+{
+    des[i].style.display = 'none';
+}
+
+}
+
+
 
 // 	des[i].innerHTML=new_string;
 }
