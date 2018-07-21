@@ -155,13 +155,37 @@ document.getElementById('lightbox').style.display = "none";
 <style>
 .selector > label {
   display:block;
+  float:left;
+  width: 14%;
+  vertical-align: middle;
+
 }
 .selector > select {
   display:block;
+  float:left;
+    width: 14%;
+    vertical-align: middle;
+      margin-right: 20px;
 }
 
 </style>
-<div class="selector" style="float:left;margin-right:20px;">
+
+<div class="selector" >
+<label for="cname">Класс</label>
+<select id='cname' name="cname"> 
+ <option value="" selected></option> 
+ <option value="бард">Бард</option>
+ <option value="волшебник">Волшебник</option>
+ <option value="друид">Друид</option>
+ <option value="жрец">Жрец</option>
+ <option value="колдун">Колдун</option>
+ <option value="паладин">Паладин</option>
+ <option value="следопыт">Следопыт</option>
+ <option value="чародей">Чародей</option>
+</select>
+</div>
+
+<div class="selector" >
 <label for="clvl">Уровень заклинания</label>
 <select id='clvl' name="clvl"> 
  <option value="" selected></option> 
@@ -178,7 +202,7 @@ document.getElementById('lightbox').style.display = "none";
 </select>
 </div>
 
-<div class="selector" style="float:left;margin-right:20px;">
+<div class="selector" >
 <label for="cschool1">Школа магии</label>
 <select id='cschool1' name="cschool2"> 
  <label for="searchall">Поиск по всему тексту</label>
@@ -194,7 +218,7 @@ document.getElementById('lightbox').style.display = "none";
 </select>
 </div>
 
-<div class="selector" style="float:left;margin-right:20px;">
+<div class="selector" >
 <label for="cschool2">Школа магии</label>
 <select id='cschool2' name="cschool2"> 
  <label for="searchall">Поиск по всему тексту</label>
@@ -210,24 +234,11 @@ document.getElementById('lightbox').style.display = "none";
 </select>
 </div>
 
-<div class="selector" style="float:left;margin-right:20px;">
-<label for="cname">Класс</label>
-<select id='cname' name="cname"> 
- <option value="" selected></option> 
- <option value="бард">Бард</option>
- <option value="волшебник">Волшебник</option>
- <option value="друид">Друид</option>
- <option value="жрец">Жрец</option>
- <option value="колдун">Колдун</option>
- <option value="паладин">Паладин</option>
- <option value="следопыт">Следопыт</option>
- <option value="чародей">Чародей</option>
-</select>
-</div>
 
 
 
-<div class="selector" style="float:left;margin-right:20px;">
+
+<div class="selector" >
 <label for="ctime">Время накладывания</label>
 <select id='ctime' name="ctime"> 
  <option value="" selected></option> 
@@ -242,7 +253,7 @@ document.getElementById('lightbox').style.display = "none";
 </select>
 </div>
 
-<div class="selector" style="float:left;margin-right:20px;">
+<div class="selector" >
 <label for="ccomp">Компоненты</label>
 <select id='ccomp' name="ccomp"> 
  <option value="" selected></option> 
@@ -255,13 +266,13 @@ document.getElementById('lightbox').style.display = "none";
 </select>
 </div>
 
-<div class="selector" style="float:left;margin-right:20px;">
+<div class="selector" >
 <label for="cduration">Длительность</label>
 <select id='cduration' name="cduration"> 
  <option value="" selected></option> 
  <option value="1">Без концентрации</option>
- <option value="<b>Компоненты:b> Концентрация">Концентрация</option>
- <option value="<b>Длительность:</b> Мгновенная">Мгновенная</option>
+ <option value="Концентрация">Концентрация</option>
+ <option value="Мгновенная">Мгновенная</option>
 </select>
 </div>
 
