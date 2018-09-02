@@ -277,7 +277,7 @@
   <! close main>
   </div>
   <div onclick="hidelight()" id="lightbox" class="featherlight" />
-  <div onclick="showlight()" class="featherlight-content" />
+  <div onclick="showlight()" onmousedown="touchStart()" onmouseup="touchEnd()" ontouchstart="touchStart()" ontouchend="touchEnd()" class="featherlight-content" />
   <button onclick="document.getElementById('lightbox').style.display='none'" class="featherlight-close-icon featherlight-close" aria-label="Close">✕</button>
 
 
