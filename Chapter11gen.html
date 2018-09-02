@@ -24,6 +24,8 @@
   document.getElementById('lightbox').style.display = "none";
   }
 
+document.getElementById("featherlight-content").ontouchstart = touchStart();
+document.getElementById("featherlight-content").ontouchend = touchEnd();
 
   </script>
 </head>
@@ -277,7 +279,7 @@
   <! close main>
   </div>
   <div onclick="hidelight()" id="lightbox" class="featherlight" />
-  <div onclick="showlight()" onmousedown="touchStart()" onmouseup="touchEnd()" ontouchstart="touchStart()" ontouchend="touchEnd()" class="featherlight-content" />
+  <div onclick="showlight()" onmousedown="touchStart()" onmouseup="touchEnd()" class="featherlight-content" id="featherlight-content" />
   <button onclick="document.getElementById('lightbox').style.display='none'" class="featherlight-close-icon featherlight-close" aria-label="Close">✕</button>
 
 
