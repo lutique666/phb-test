@@ -575,13 +575,19 @@ function SearchString() {
 
   for (var i = 0; i < des.length; i++) {
     //new_string = des[i].innerHTML
-
+    	var gacha = 0
+    	for (var j=0; j<source_check.length; j++) {
+    			if (spellname[i].innerHTML.indexOf(source_check[j]) >= 0)
+    				{
+    					var gacha = 1;
+    				}
+    	}
 
     if (check === true) {
 
       if (cduration != "1") //спелл с концентрацией или мгновенный
       {
-        if (((des[i].innerHTML.indexOf(neadlestring.toUpperCase()) >= 0) || (des[i].innerHTML.indexOf(neadlestring) >= 0) || (des[i].innerHTML.indexOf(neadlestringex) >= 0)) && (h3[i].innerHTML.indexOf(clvl) >= 0) && ((h3[i].innerHTML.indexOf(cschool1) >= 0) || (h3[i].innerHTML.indexOf(cschool2) >= 0)) && ((des[i].innerHTML.indexOf(ctime) <= des[i].innerHTML.indexOf('<b>Время') + 60) && des[i].innerHTML.indexOf(ctime) >= 0) && (des[i].innerHTML.indexOf(ccomp) >= 0) && (des[i].innerHTML.indexOf(cduration) >= 0) && (des[i].innerHTML.indexOf(cname) >= 0)) {
+        if (((des[i].innerHTML.indexOf(neadlestring.toUpperCase()) >= 0) || (des[i].innerHTML.indexOf(neadlestring) >= 0) || (des[i].innerHTML.indexOf(neadlestringex) >= 0)) && (h3[i].innerHTML.indexOf(clvl) >= 0) && ((h3[i].innerHTML.indexOf(cschool1) >= 0) || (h3[i].innerHTML.indexOf(cschool2) >= 0)) && ((des[i].innerHTML.indexOf(ctime) <= des[i].innerHTML.indexOf('<b>Время') + 60) && des[i].innerHTML.indexOf(ctime) >= 0) && (des[i].innerHTML.indexOf(ccomp) >= 0) && (des[i].innerHTML.indexOf(cduration) >= 0) && (des[i].innerHTML.indexOf(cname) >= 0) && gacha == 1) {
           /*(des[i].innerHTML.indexOf(neadlestring.toUpperCase()) >= 0) || (des[i].innerHTML.indexOf(neadlestring) >= 0) || (des[i].innerHTML.indexOf(neadlestringex) >= 0)
           Основная поисковая строка, ищется по всем регистрам в полном тексте спелла des[i]
           */
@@ -615,7 +621,7 @@ function SearchString() {
         }
       } else //Длительный спелл без концентрации || (des[i].innerHTML.indexOf('Мгновенная') < 0)
       {
-        if (((des[i].innerHTML.indexOf(neadlestring.toUpperCase()) >= 0) || (des[i].innerHTML.indexOf(neadlestring) >= 0) || (des[i].innerHTML.indexOf(neadlestringex) >= 0)) && (h3[i].innerHTML.indexOf(clvl) >= 0) && ((h3[i].innerHTML.indexOf(cschool1) >= 0) || (h3[i].innerHTML.indexOf(cschool2) >= 0)) && ((des[i].innerHTML.indexOf(ctime) <= des[i].innerHTML.indexOf('<b>Время') + 60) && des[i].innerHTML.indexOf(ctime) >= 0) && (des[i].innerHTML.indexOf(ccomp) >= 0) && ((des[i].innerHTML.indexOf('Концентрация') < 0) && (des[i].innerHTML.indexOf('Мгновенная') < 0) || ((des[i].innerHTML.indexOf('Мгновенная или') >= 0))) && (des[i].innerHTML.indexOf(cname) >= 0)) {
+        if (((des[i].innerHTML.indexOf(neadlestring.toUpperCase()) >= 0) || (des[i].innerHTML.indexOf(neadlestring) >= 0) || (des[i].innerHTML.indexOf(neadlestringex) >= 0)) && (h3[i].innerHTML.indexOf(clvl) >= 0) && ((h3[i].innerHTML.indexOf(cschool1) >= 0) || (h3[i].innerHTML.indexOf(cschool2) >= 0)) && ((des[i].innerHTML.indexOf(ctime) <= des[i].innerHTML.indexOf('<b>Время') + 60) && des[i].innerHTML.indexOf(ctime) >= 0) && (des[i].innerHTML.indexOf(ccomp) >= 0) && ((des[i].innerHTML.indexOf('Концентрация') < 0) && (des[i].innerHTML.indexOf('Мгновенная') < 0) || ((des[i].innerHTML.indexOf('Мгновенная или') >= 0))) && (des[i].innerHTML.indexOf(cname) >= 0) && gacha == 1) {
           //	var new_string=new_string.replace(new RegExp(neadlestring, 'g'), replaceser);
           //	var new_string=new_string.replace(new RegExp(neadlestringex, 'g'), replaceser2);
           //  var new_string=new_string.replace(neadlestring.toUpperCase(), '<span>'+neadlestring.toUpperCase()+'</span>');
@@ -646,14 +652,15 @@ function SearchString() {
           des[i].style.display = 'none';
         }
       }
-      1
     }
   }
 
 
-  if (found.length == 0) {
-    document.getElementById("nothing").style.display = "block";
-  } else {
-    document.getElementById("nothing").style.display = "none";
-  }
+if (found.length == 0) {
+   document.getElementById("nothing").style.display = "block";
+} else {
+   document.getElementById("nothing").style.display = "none";
+}
+
+
 }
