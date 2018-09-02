@@ -199,24 +199,28 @@ function getCookie(c_name) {
 /*ПОЖАЛУЙСТА ПОФИКСИТЕ ЭТО*/
 /*Скрытие лайт бокса. */
 function hidelight() {
-  if (check != 1) {
-    document.getElementById('lightbox').style.display = 'none'
-    if (found.length > 0) {
-      //for (var i=0; i<found.length; i++) {
-      //des[found[i]].innerHTML = des[found[i]].innerHTML.replace(/<span>/g, '');
-      //}
-      found = [];
-    }
+    if (check != 1)
+    {
+    document.getElementById('lightbox').style.display='none'
+    if (found.length > 0)
+    	{
+    		//for (var i=0; i<found.length; i++) {
+    		//des[found[i]].innerHTML = des[found[i]].innerHTML.replace(/<span>/g, '');
+			//}
+    		found = [];
+    	}
 
-  } else {
-    check = 0
-  }
+    }
+    else
+    {
+        check = 0
+    }
 }
 
 
 /*И ЭТО. Клик на диве идет сквозь элемент. Для закрытия по клику за пределом описания. При клике на описание, клик проходит сквозь див, но это кастыль это фиксит*/
 function showlight() {
-  check = 1
+    check = 1
 }
 
 
@@ -443,7 +447,7 @@ function ChangeLevel(levelus) {
   	var n=6
   } старый вариант */
 
-  var port = window.matchMedia('(orientation: portrait)');
+  var port = window.matchMedia('(max-device-width : 1920px)');
   if (port.matches) {
     var n = 3
   } else {
@@ -652,14 +656,4 @@ function SearchString() {
   } else {
     document.getElementById("nothing").style.display = "none";
   }
-}
-
-$(function() {
-  $('.toggle-overlay').click(function() {
-    $('aside').toggleClass('open');
-  });
-});
-
-function hidelight() {
-
 }

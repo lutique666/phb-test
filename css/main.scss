@@ -1,6 +1,19 @@
-body,
 html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: inherit;
+}
+
+body {
+  position: relative;
   margin: 0;
+  padding-bottom: 6rem;
+  min-height: 100%;
 }
 
 #headTable {
@@ -11,7 +24,7 @@ html {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  @media screen and (orientation: portrait) {
+  @media only screen and (max-device-width : 1900px) {
     margin: 0 auto;
     width: 95%;
     height: auto;
@@ -37,34 +50,21 @@ html {
 .menu {
   flex: 0 1 auto;
   align-self: auto;
-  @media screen and (orientation: portrait) {
+  @media only screen and (max-device-width : 1900px) {
     flex: 0 1 auto;
     align-self: auto;
   }
 
-  p {
-    margin: 0;
-    padding: 0;
-    position: relative;
-    text-align: center;
-    font-family: Amatic SC;
-    font-size: 25px;
-    cursor: pointer;
-    @media screen and (orientation: portrait) {
-      display: none;
-    }
-  }
-
   img {
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    height: 70px;
   }
 }
 
 .title {
   flex: 2 2 50%;
   align-self: center;
-  @media screen and (orientation: portrait) {
+  @media only screen and (max-device-width : 1900px) {
     flex: 2 2 50%;
     align-self: center;
   }
@@ -89,6 +89,10 @@ html {
   background-color: rgba(0, 0, 0, 0.9);
   overflow-x: hidden;
   transition: 0.5s;
+  @media only screen and (max-device-width : 1900px) {
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 1);
+  }
 
   p {
     text-decoration: none;
@@ -118,7 +122,7 @@ html {
     display: block;
     transition: 0.3s;
     text-align: center;
-    @media screen and (max-height: 450px) {
+    @media screen and (max-height: 650px) {
       font-size: 20px;
     }
   }
@@ -133,7 +137,7 @@ html {
     text-align: center;
   }
 
-  .overlay a:focus,
+  a:focus,
   a:hover {
     color: #92b5ff;
   }
@@ -145,80 +149,11 @@ html {
     right: 45px;
     font-size: 60px;
     color: #c42111;
-    @media screen and (max-height: 450px) {
+    @media screen and (max-height: 650px) {
       font-size: 40px;
       top: 15px;
       right: 35px;
     }
-  }
-}
-
-.overlayP {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  padding-top: 25px;
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.9);
-  overflow-x: hidden;
-  transition: 0.5s;
-
-  p {
-    text-decoration: none;
-    font-size: 10px;
-    color: #818181;
-    display: block;
-    -webkit-margin-before: 0;
-    -webkit-margin-after: 0;
-    transition: 0.3s;
-  }
-
-  label {
-    text-decoration: none;
-    font-size: 12px;
-    color: #818181;
-    display: block;
-    -webkit-margin-before: 0;
-    -webkit-margin-after: 0;
-    transition: 0.3s;
-  }
-
-  a {
-    padding: 3px;
-    text-decoration: none;
-    font-size: 12px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-    text-align: center;
-  }
-
-  i {
-    padding: 3px;
-    text-decoration: none;
-    font-size: 12px;
-    color: #ff9625;
-    display: block;
-    transition: 0.3s;
-    text-align: center;
-  }
-
-  .closebtn {
-    z-index: 100;
-    margin: 0 auto;
-    position: absolute;
-    top: 0;
-    right: 0;
-    font-size: 30px;
-    color: #c42111;
-  }
-
-  .overlayP a:focus,
-  a:hover {
-    color: #92b5ff;
   }
 }
 
@@ -227,16 +162,6 @@ html {
   top: 2em;
   width: 100%;
   margin-top: 2em;
-}
-
-.overlay-contentP {
-  position: relative;
-  top: 5px;
-  margin: 20 px;
-}
-
-#headPortrait {
-  display: none;
 }
 
 .circle,
@@ -252,23 +177,13 @@ html {
   letter-spacing: 3px;
   cursor: pointer;
 }
-@media screen and (orientation: portrait) {
-  .cell {
-    flex: 0 1 auto;
-    align-self: auto;
-  }
 
-  .circle,
-  .circle2 {
-    border-radius: 50%;
-    width: 15px;
-    height: 15px;
-    padding: 1px;
-    border: 1px solid #666;
-    color: #000000;
-    text-align: center;
-    font: 1.5em Ubuntu Mono;
-    letter-spacing: 3px;
-    cursor: pointer;
-  }
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
 }
