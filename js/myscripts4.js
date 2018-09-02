@@ -363,21 +363,23 @@ if (json_str != "")
 
 }
 
+//Берем координаты при начале перетягивания
 function touchStart()
 {
 
     var e = window.event;
-    startX = e.clientX;
-    startY = e.clientY;
+    startX = e.clientX || e.touches[0].clientX;
+    startY = e.clientY || e.touches[0].clientY;
 
 }
 
 function touchEnd()
 {
-
+//Берем координаты при начале перетягивания
     var e = window.event;
-    endX = e.clientX;
-    endY = e.clientY;
+    endX = e.clientX || e.touches[0].clientX;
+    endY = e.clientY || e.touches[0].clientY;
+//Вычисляем разницу, по которой будем определять куда тянули страницу
 var diffX = startX - endX;
 var diffY = startY - endY;
 
