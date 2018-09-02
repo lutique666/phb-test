@@ -14,9 +14,16 @@ var content; //Переменная в которой собирается та�
 var spellsource = document.getElementsByClassName('source');
 var draw_table = [];
 var draw_table2 = [];
-var source_class = document.getElementsByClassName('source')
+var source_class = document.getElementsByClassName('source');
 //var sourcep_class = document.getElementsByClassName('sourcep')
-var n //Кол-во столбцов в таблице
+var n; //Кол-во столбцов в таблице
+
+
+//Для swipe
+var startX;
+var startY;
+var endY;
+var endY;  
 
 var bard0 = ['Волшебная рука (КИ)', 'Дружба (КИ)', 'Защита от оружия (КИ)', 'Злая насмешка (КИ)', 'Малая иллюзия (КИ)', 'Меткий удар (КИ)', 'Пляшущие огоньки (КИ)', 'Починка (КИ)', 'Свет (КИ)', 'Сообщение (КИ)', 'Фокусы (КИ)', 'Раскат грома (РКпВ|EE)', 'Пульсирующая волна (КВ)', 'Крепкий росток (ПХ)', 'Оплетающая лоза (ПХ)', 'Весёлая песня (СЗТ)', 'Свежая краска (СЗТ)', 'Отвлечение (ТЗ)', 'Огненные глаза (ТЗ)', 'Нервировать (ТЗ)', 'Изменить инструмент (ТЗ)', 'Двойная тень (КТЧ)', 'Умбратургия (КТЧ)'];
 var bard1 = ['Безмолвный образ (КИ)', 'Волна грома (КИ)', 'Героизм (КИ)', 'Диссонирующий шёпот (КИ)', 'Дружба с животными (КИ)', 'Жуткий смех Таши (КИ)', 'Лечащее слово (КИ)', 'Лечение ран (КИ)', 'Маскировка (КИ)', 'Невидимое письмо* (КИ)', 'Невидимый слуга* (КИ)', 'Обнаружение магии* (КИ)', 'Огонь фей (КИ)', 'Опознание* (КИ)', 'Очарование личности (КИ)', 'Падение пёрышком (КИ)', 'Понимание языков* (КИ)', 'Порча (КИ)', 'Разговор с животными* (КИ)', 'Скороход (КИ)', 'Усыпление (КИ)', 'Дрожь земли (РКпВ|EE)', 'Внезапное пробуждение (UA)', 'Марионетка (UA)', 'Направляющая длань* (UA)', 'Неземной припев (UA)', 'Чувство эмоций (UA)', 'Морская удача* (КВ)', 'Плавание (КВ)', 'Беспорядочный рост (ПХ)', 'Древесный мост* (ПХ)', 'Острые листья (ПХ)', 'Споры телепатической связи (ПХ)', 'Корректировка позиции (УМ:БМ)', 'Пришпорить скакуна (УМ:БМ)', 'Идея (ТЗ)', 'Луч усталости (ТЗ)', 'Причёска* (ТЗ)', 'Внимательное бдение (ТЗ)', 'Танцующее пламя (ТЗ)', 'Писарь* (ТЗ)', 'Удаление надписей (ТЗ)', 'Очарование Элонии (ТЗ)', 'Чёрное пламя (КТЧ)', 'Аура теней (КТЧ)', 'Причинить боль (КТЧ)', 'Вдохновение решимости (СУ)', 'Жидкая ночь* (ПЗ)', 'Язык дурака (ПЗ)'];
@@ -273,7 +280,6 @@ function closeSet() {
 function pageload() {
 
   current_display_table = document.getElementById(class_name + level_number + 'Table');
-  current_display_spell = document.getElementsByClassName('spellname')[0];
   current_display_class = document.getElementById(class_name);
   document.getElementsByClassName('overlay-content')[0].innerHTML = table_of_contents;
 
@@ -352,10 +358,77 @@ if (json_str != "")
   }
   //
 
+
+
+
+}
+
+function touchStart()
+{
+
+    var e = window.event;
+    startX = e.clientX;
+    startY = e.clientY;
+
+}
+
+function touchEnd()
+{
+
+    var e = window.event;
+    endX = e.clientX;
+    endY = e.clientY;
+var diffX = startX - endX;
+var diffY = startY - endY;
+
+
+if ((Math.abs(diffX) > Math.abs(diffY)) && (Math.abs(diffX) >= 50))
+{
+	for (i=0; i < draw_table_swipe.length; i++) 
+	{
+			if (draw_table_swipe[i] == current_display_spell)
+			{
+				j = i
+			}
+
+	}
+	if 	(diffX > 0)
+		{
+			
+			if (j == draw_table_swipe.length-1)
+			{
+				j=0
+			}
+			else
+			{
+				j++
+			}
+			Search(draw_table_swipe[j]);
+
+
+		}
+	else if (diffX < 0)
+		{
+			if (j == 0)
+			{
+				j=draw_table_swipe.length-1
+			}
+			else
+			{
+				j--
+			}
+			Search(draw_table_swipe[j]);
+
+
+		}
+}
+else
+{
+	
 }
 
 
-
+}
 
 function Content(id) {
   if (suggestion.style.display == 'block') {
@@ -427,6 +500,7 @@ function ChangeLevel(levelus) {
 
 
   var content = '<div class="TableBody"><div class="TableRow">'
+  draw_table_swipe = []
   draw_table = []
   draw_table2 = []
   for (i = 0; i < eval(class_name + current_display_level).length; i++) {
@@ -435,6 +509,7 @@ function ChangeLevel(levelus) {
       if (eval(class_name + current_display_level)[i].indexOf(source_check[j]) >= 0) {
         if (draw_table[draw_table.length - 1] != eval(class_name + current_display_level)[i]) {
           draw_table.push(eval(class_name + current_display_level)[i]);
+          draw_table_swipe.push(eval(class_name + current_display_level)[i]);
         }
       }
     }
@@ -519,6 +594,8 @@ function Search(neadle) {
 
     if (spellname[i].innerHTML.toUpperCase().indexOf(html.toUpperCase()) == 0) {
       des[i].style.display = 'block';
+      current_display_spell = spellname[i].innerHTML
+
     } else {
       des[i].style.display = 'none';
     }
