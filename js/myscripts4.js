@@ -363,13 +363,83 @@ if (json_str != "")
 
 }
 
+
+function mouseStart()
+{
+
+    var e = window.event;
+    startX = e.clientX;
+    startY = e.clientY;
+
+}
+
+function mouseEnd()
+{
+//Берем координаты при начале перетягивания
+    var e = window.event;
+    endX = e.clientX;
+    endY = e.clientY;
+//Вычисляем разницу, по которой будем определять куда тянули страницу
+var diffX = startX - endX;
+var diffY = startY - endY;
+
+
+if ((Math.abs(diffX) > Math.abs(diffY)) && (Math.abs(diffX) >= 50))
+{
+	for (i=0; i < draw_table_swipe.length; i++) 
+	{
+			if (draw_table_swipe[i] == current_display_spell)
+			{
+				j = i
+			}
+
+	}
+	if 	(diffX > 0)
+		{
+			
+			if (j == draw_table_swipe.length-1)
+			{
+				j=0
+			}
+			else
+			{
+				j++
+			}
+			Search(draw_table_swipe[j]);
+
+
+		}
+	else if (diffX < 0)
+		{
+			if (j == 0)
+			{
+				j=draw_table_swipe.length-1
+			}
+			else
+			{
+				j--
+			}
+			Search(draw_table_swipe[j]);
+
+
+		}
+}
+else
+{
+	
+}
+
+
+}
+
+
 //Берем координаты при начале перетягивания
 function touchStart()
 {
 
     var e = window.event;
-    startX = e.clientX || e.touches[0].clientX;
-    startY = e.clientY || e.touches[0].clientY;
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
 
 }
 
@@ -377,8 +447,8 @@ function touchEnd()
 {
 //Берем координаты при начале перетягивания
     var e = window.event;
-    endX = e.clientX || e.touches[0].clientX;
-    endY = e.clientY || e.touches[0].clientY;
+    endX = e.touches[0].clientX;
+    endY = e.touches[0].clientY;
 //Вычисляем разницу, по которой будем определять куда тянули страницу
 var diffX = startX - endX;
 var diffY = startY - endY;
