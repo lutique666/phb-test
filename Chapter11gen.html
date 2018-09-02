@@ -24,8 +24,7 @@
   document.getElementById('lightbox').style.display = "none";
   }
 
-document.getElementById("featherlight-content").ontouchstart = touchStart();
-document.getElementById("featherlight-content").ontouchend = touchEnd();
+
 
   </script>
 </head>
@@ -279,11 +278,15 @@ document.getElementById("featherlight-content").ontouchend = touchEnd();
   <! close main>
   </div>
   <div onclick="hidelight()" id="lightbox" class="featherlight" />
-  <div onclick="showlight()" onmousedown="mouseStart()" onmouseup="mouseEnd()" class="featherlight-content" id="featherlight-content" />
+  <div onclick="showlight()" onmousedown="mouseStart()" onmouseup="mouseEnd()" ontouchstart="touchStart()" ontouchend="touchEnd()" class="featherlight-content" id="featherlight-content" />
   <button onclick="document.getElementById('lightbox').style.display='none'" class="featherlight-close-icon featherlight-close" aria-label="Close">✕</button>
 
 
 
+
+
+
+  
       <div class=featherlight-inner><img id=0 class="favourite" onclick="addFavourite(this)" ontouch="addFavourite(this)" src="img/heart.png" />
         <h2 class=spellname>Адское возмездие (КИ)</h2>
         <h2 class=eng><a href="https://thegiddylimit.github.io/spells.html#hellish%20rebuke_phb" target="_blank">Hellish rebuke</a></h2>
