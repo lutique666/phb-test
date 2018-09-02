@@ -440,6 +440,8 @@ function touchStart()
     var e = window.event;
     startX = e.touches[0].clientX;
     startY = e.touches[0].clientY;
+    console.log(startX)
+    console.log(startY)
 
 }
 
@@ -447,8 +449,8 @@ function touchEnd()
 {
 //Берем координаты при начале перетягивания
     var e = window.event;
-    endX = e.touches[0].clientX;
-    endY = e.touches[0].clientY;
+    endX = e.changedTouches[0].clientX;
+    endY = e.changedTouches[0].clientY;
 //Вычисляем разницу, по которой будем определять куда тянули страницу
 var diffX = startX - endX;
 var diffY = startY - endY;
