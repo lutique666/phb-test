@@ -237,6 +237,7 @@ function openSearch() {
   document.getElementById("searchbook").style.display = "block";
   document.getElementById("main").style.display = "none";
   document.getElementById("searchform").style.display = "none";
+  current_display_spell = "Nothing"
 }
 
 function openBook() {
@@ -384,7 +385,7 @@ var diffX = startX - endX;
 var diffY = startY - endY;
 
 
-if ((Math.abs(diffX) > Math.abs(diffY)) && (Math.abs(diffX) >= 50))
+if ((Math.abs(diffX) > Math.abs(diffY)) && (Math.abs(diffX) >= 50) && current_display_spell != "Nothing")
 {
 	for (i=0; i < draw_table_swipe.length; i++) 
 	{
@@ -456,7 +457,7 @@ var diffX = startX - endX;
 var diffY = startY - endY;
 
 
-if ((Math.abs(diffX) > Math.abs(diffY)) && (Math.abs(diffX) >= 50))
+if ((Math.abs(diffX) > Math.abs(diffY)) && (Math.abs(diffX) >= 50) && current_display_spell != "Nothing")
 {
 	for (i=0; i < draw_table_swipe.length; i++) 
 	{
@@ -496,9 +497,9 @@ if ((Math.abs(diffX) > Math.abs(diffY)) && (Math.abs(diffX) >= 50))
 
 		}
 }
-else
+else if (diffY >= 50)
 {
-	
+	preventDefault();
 }
 
 
