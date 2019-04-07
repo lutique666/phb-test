@@ -463,3 +463,4 @@ html.with-featherlight {
   color: #0080FF;
   display: none;
 }
+table, td {text-align: center;vertical-align: center;}table{width: 65%;margin: 0 auto;}
