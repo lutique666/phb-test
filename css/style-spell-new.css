@@ -1,0 +1,109 @@
+.spellclass {
+  position: relative;
+  margin: 0 auto;
+  width:90%;
+  font-family: Ubuntu Mono;
+  display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align:center;
+}
+.spellCell {
+  flex: 1 1 auto;
+    background-color:#FFFFFF;
+    border: 1px solid #AAAAAA;
+    border-radius: 6px;
+    box-shadow: 0 5px #999;
+    padding: 5px 5px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.spellCell:active {
+  box-shadow: 0 2px #999;
+  transform: translateY(4px);
+}
+
+.numbers {
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+
+@media screen and (orientation: portrait) {
+  .spellclass {
+    width:90%;
+  }
+  .spellCell {
+    flex: 1 1 auto;
+    padding: 3px 3px;
+    font-size: 18px;
+  }
+  .TableCell2 {
+    width:15em;
+    height:auto;
+  }
+}
+.hide {
+  display: none;
+}
+
+.white_content {
+  display: none;
+}
+
+.spelllist a {
+  text-decoration: none;
+  color: #000000;
+  padding: 2px 2px 2px 2px;
+}
+
+.featherlight-inner span { background-color:yellow; }
+
+.spelllist a:hover {
+  text-decoration: none;
+  color: #ff9625;
+}
+#table {
+  position: relative;
+  margin: 0 auto;
+  top: 1em;
+  font-family: Ubuntu Mono;
+  font-size: 18px;
+  width: 90%;
+  height: auto;
+  text-align: center;
+  vertical-align: middle;
+  border-collapse: collapse;
+  display: none;
+}
+@media screen and (orientation: portrait) {
+#table {
+font-size: 14px;
+  }
+}
+
+.TableCell2 {
+  width:20em;
+  height: 2.5em;
+  border: 1px solid #AAAAAA;
+  padding: 1px 1px;
+  text-align: center;
+}
+
+.TableCell2:hover {
+  cursor: pointer;
+}
+
+.TableRow {
+  display: table-row;
+}
+
+.TableCell2 {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.TableBody {
+  display: table-row-group;
+}

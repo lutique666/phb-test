@@ -1,3 +1,8 @@
+h2 {
+  font-family: Ubuntu Mono;
+  font-weight: bold;
+}
+
 .info {
   display: none;
   margin:0;
@@ -244,6 +249,23 @@ html.with-featherlight {
   margin-top: 20px
 }
 
+.option2 {
+  position: relative;
+  margin: 0 auto;
+
+  font-family: Ubuntu Mono;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  text-align: center
+}
+
+@media only screen and (max-device-width: 1900px) {
+  .option2 {
+
+  }
+}
+
 .option {
   position: relative;
   margin: 0 auto;
@@ -261,7 +283,9 @@ html.with-featherlight {
   }
 }
 
+
 .optionCell, .archetypeCell {
+
   flex: 1 1 auto;
   background-color: #FFFFFF;
   border: 1px solid #AAAAAA;
@@ -270,6 +294,11 @@ html.with-featherlight {
   padding: 5px;
   font-size: 25px;
   cursor: pointer
+}
+
+.optionCell a {
+    text-decoration: none;
+  color: black;
 }
 
 .optionCell, .archetypeCell:active {
@@ -459,8 +488,22 @@ html.with-featherlight {
   }
 }
 
-.archetype0, .archetype1, .archetype2, .archetype3, .archetype4, .archetype5 {
-  color: #0080FF;
+.archetype0, .archetype1, .archetype2, .archetype3, .archetype4, .archetype5, .archetype6, .archetype7, .archetype8, .archetype9, .archetype10 {
+  color: #337ab7;
   display: none;
+
 }
-table, td {text-align: center;vertical-align: center;}table{width: 65%;margin: 0 auto;}
+
+.archetype0, .archetype1, .archetype2, .archetype3, .archetype4, .archetype5, .archetype6, .archetype7, .archetype8, .archetype9, .archetype10 table {
+   color: #337ab7;
+}
+table, td {text-align: center;vertical-align: center;}
+table{width: 90%;margin: auto auto;}
+
+@media only screen and (max-width: 1024px)  {
+	table{
+		width: 90%;
+		margin: auto auto;
+		font-size: 9px;
+		}
+}

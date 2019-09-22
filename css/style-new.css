@@ -1,0 +1,458 @@
+﻿html, body {
+  margin: 0;
+}
+
+#headTable {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  margin: 0 auto;
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.favourite {
+  margin: 0 auto;
+  display: block;
+
+}
+
+
+.menu {
+  order: 0;
+  flex: 0 1 auto;
+  align-self: auto;
+}
+
+.title {
+  order: 0;
+  flex: 0 2 50%;
+}
+
+.search {
+  order: 0;
+  flex: 0 1 auto;
+  align-self: auto;
+}
+
+.title p {
+  margin: 0;
+  padding: 0;
+  font-family: Amatic SC;
+  text-align: center;
+  font-size: 3em;
+}
+
+#headTable span p {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  text-align: center;
+  font-family: Amatic SC;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+#headTable .big .huge{
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+}
+#headTable .huge {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+}
+.rightTable {
+  height: 100px;
+  padding-right: 1em;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.rightTableCell1 {
+  order: 0;
+  flex: 0 1 100%;
+  align-self: center;
+}
+
+.rightTableCell1 p {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  text-align: center;
+  font-family: Amatic SC;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.rightTableCell2 {
+  order: 0;
+  flex: 0 1 100%;
+  align-self: center;
+}
+
+.rightTableCell2 .small {
+  cursor: pointer;
+  width: 1.5em;
+  height: 3sem;
+}
+
+.spellname {
+  font-family: Lora;
+  font-size: 1.5em;
+  -webkit-margin-before: 0.83em;
+  -webkit-margin-after: 0.83em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  font-weight: bold;
+}
+
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+.overlay-content {
+  position: relative;
+  top: 2em;
+  width: 100%;
+  margin-top: 2em;
+
+}
+.overlay p {
+  text-decoration: none;
+  font-size: 24px;
+  color: #818181;
+  display: block;
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+  transition: 0.3s;
+
+}
+
+.overlay label {
+  text-decoration: none;
+  font-size: 18px;
+  color: #818181;
+  display: block;
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+  transition: 0.3s;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 24px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+  text-align: center;
+}
+
+.overlay i {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 24px;
+  color: #ff9625;
+  display: block;
+  transition: 0.3s;
+  text-align: center;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: #92b5ff;
+}
+
+.overlay .closebtn {
+  z-index: 100;
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+  color: #c42111;
+}
+.overlay-contentP {
+  position: relative;
+  top: 5px;
+  margin: 20 px;
+}
+.overlayP {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  padding-top:25px;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+.overlayP p {
+  text-decoration: none;
+  font-size: 10px;
+  color: #818181;
+  display: block;
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+  transition: 0.3s;
+}
+
+.overlayP label {
+  text-decoration: none;
+  font-size: 12px;
+  color: #818181;
+  display: block;
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+  transition: 0.3s;
+}
+
+.overlayP a {
+  padding: 3px;
+  text-decoration: none;
+  font-size: 12px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+  text-align: center;
+}
+
+.overlayP i {
+  padding: 3px;
+  text-decoration: none;
+  font-size: 12px;
+  color: #ff9625;
+  display: block;
+  transition: 0.3s;
+  text-align: center;
+}
+
+.overlayP a:hover, .overlayP a:focus {
+  color: #92b5ff;
+}
+
+.overlayP .closebtn {
+  z-index: 100;
+  margin:0 auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 30px;
+  color: #c42111;
+}
+
+#inputform {
+  position: relative;
+  text-align:center;
+  width: 95%;
+  margin: 0 auto;
+  font-family: Ubuntu Mono;
+  display: none;
+}
+
+#searchbook {
+  display: none;
+}
+#searchbookP {
+  display: none;
+}
+#neadlestring {
+  width: 95%;
+    vertical-align: middle;
+    margin-bottom:5px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {
+    font-size: 20px;
+  }
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+
+/**
+ * Featherlight - ultra slim jQuery lightbox
+ * Version 1.7.12 - http://noelboss.github.io/featherlight/
+ *
+ * Copyright 2017,  Noël Raoul Bossart (http://www.noelboss.com)
+ * MIT Licensed.
+**/
+
+@media all {
+  html.with-featherlight {
+    overflow: hidden;
+  }
+  .featherlight {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2007483647;
+    text-align: center;
+    white-space: wrap;
+    background: #333;
+    background: rgba(0, 0, 0, 0);
+  }
+  .featherlight:last-of-type {
+    background: rgba(0, 0, 0, .8);
+  }
+  .featherlight:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
+  .featherlight-content {
+    position: fixed;
+    top: 5%;
+    left: 10%;
+    width: 80%;
+    height: 90%;
+    padding: 5px;
+    text-align: left;
+    font-size: 1.1em;
+    background-color: white;
+    z-index: 2147483647;
+    overflow: auto;
+  }
+  @media screen and (orientation: portrait) {
+    .featherlight-content {
+    font-size: 0.8em;
+    }
+    .featherlight-close-icon {
+      font-size: 1.8em;
+    }
+    .featherlight-content h2 {
+      font-size: 1.2em;
+      font-family: Lora;
+    }
+  }
+  .featherlight-content h2, h3 {
+    font-family: Lora;
+  }
+  .featherlight .featherlight-inner {
+    display: block;
+  }
+  .featherlight link.featherlight-inner, .featherlight script.featherlight-inner, .featherlight style.featherlight-inner {
+    display: none;
+  }
+  .featherlight-close-icon {
+    position: absolute;
+    z-index: 9999;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    text-align: center;
+    font-family: Lora;
+    font-size: 3em;
+    background: #fff;
+    background: rgba(255, 255, 255, .3);
+    color: #000;
+    border: 0;
+    padding: 0;
+  }
+  .featherlight .featherlight-close-icon::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+  .featherlight .featherlight-image {
+    width: 100%
+  }
+  .featherlight-iframe .featherlight-content {
+    border-bottom: 0;
+    padding: 0;
+    -webkit-overflow-scrolling: touch;
+    overflow-y: scroll;
+  }
+  .featherlight iframe {
+    border: 0;
+  }
+  .featherlight * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+}
+#headPortrait {
+  display: none;
+}
+.circle, .circle2 {
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  padding: 4px;
+  border: 2px solid #666;
+  color: #000000;
+  text-align: center;
+  font: 2em Ubuntu Mono;
+  letter-spacing: 3px;
+  cursor: pointer;
+}
+
+# @media print {
+  html.with-featherlight>*>: not(.featherlight) {
+    display: none;
+  }
+}
+
+@media screen and (orientation: portrait) {
+  #headTable {
+    display: none;
+  }
+  #headPortrait {
+    margin: 0 auto;
+    width:95%;
+    height:auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #headPortrait img {
+    padding:2px;
+    width:25px;
+    height:25px;
+  }
+  #headPortrait p {
+    font-family: Amatic SC;
+    font-size: 1.5em;
+  }
+
+.cell {
+  flex: 0 1 auto;
+  align-self: auto;
+}
+.circle, .circle2 {
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  padding: 1px;
+  border: 1px solid #666;
+  color: #000000;
+  text-align: center;
+  font: 1.5em Ubuntu Mono;
+  letter-spacing: 3px;
+  cursor: pointer;
+}
+}
