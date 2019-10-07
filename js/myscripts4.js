@@ -421,6 +421,7 @@ function roll()
 }
 
 function saveRoll() {
+var preset_string = '';
  //Проверяем переменные пресетов dice_arr от 0 до 5. Находим среди них первый пустой и пушим туда элементы из текущего массиво по одному 
  for (i=0; i<6; i++)
  {
@@ -428,15 +429,65 @@ function saveRoll() {
  	{
  		for (j=0; j<dice_array.length; j++) {
  		eval('dice_arr'+i).push(dice_array[j]);
+				//Формирование строки, которая уйдет в пресет. Если элемент не пустой в строку добавится количество дайсов и кDice
+				if (j==0)
+					{
+						if (dice_array[j]>0)
+							{
+							preset_string +=dice_array[j]+'к4 ' 
+							}
+						
+					}
+				else if (j==1)
+					{
+							if (dice_array[j]>0)
+							{
+							preset_string +=dice_array[j]+'к6 ' 
+							}
+					}
+				else if (j==2)
+					{
+							if (dice_array[j]>0)
+							{
+							preset_string +=dice_array[j]+'к8 ' 
+							}
+					}
+				else if (j==3)
+					{
+							if (dice_array[j]>0)
+							{
+							preset_string +=dice_array[j]+'к10 ' 
+							}
+
+					}
+				else if (j==4)
+					{
+							if (dice_array[j]>0)
+							{
+							preset_string +=dice_array[j]+'к12 ' 
+							}
+
+					}
+				else if (j==5)
+					{
+							if (dice_array[j]>0)
+							{
+							preset_string +=dice_array[j]+'к20 ' 
+							}
+
+					}
  		}
- 	 json_str = JSON.stringify(dice_array);
-	 createCookie('favouriteroll' + i, json_str, 365);
- 		break
+ 	document.getElementsByClassName('preset')[i].innerHTML = preset_string;
+ 	json_str = JSON.stringify(dice_array);
+	createCookie('favouriteroll' + i, json_str, 365);
+ 	break
  	}
  
- 	 
+	 	 
  }
 
+
+				
 }
 
 
