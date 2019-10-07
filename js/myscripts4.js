@@ -427,9 +427,11 @@ var preset_string = '';
  {
  	if (eval('dice_arr'+i).length == 0)
  	{
+ 		preset_string +=i+1+'. ';
  		for (j=0; j<dice_array.length; j++) {
  		eval('dice_arr'+i).push(dice_array[j]);
 				//Формирование строки, которая уйдет в пресет. Если элемент не пустой в строку добавится количество дайсов и кDice
+
 				if (j==0)
 					{
 						if (dice_array[j]>0)
@@ -503,7 +505,11 @@ function loadRoll(preset) {
 	 roll()
 }
 function deleteRoll() {
-console.log(dice_array);
+var preset = Number(prompt('Выберите пресет для удаления?', 1)-1);
+//Зануляем длину массива, что приводит его в виду пустого массива [];
+eval('dice_arr'+preset).length=0;
+console.log(eval('dice_arr'+preset));
+document.getElementsByClassName('preset')[preset].innerHTML = (preset+1)+'. Пусто';
 }
 
 function eraseLog() {
