@@ -17,7 +17,7 @@ var draw_table2 = [];
 var source_class = document.getElementsByClassName('source');
 //var sourcep_class = document.getElementsByClassName('sourcep')
 var n; //Кол-во столбцов в таблице
-
+var dice_array = [];
 
 //Для swipe
 var startX;
@@ -109,9 +109,7 @@ var h3 = document.getElementsByTagName('h3')
 //Вспомогательная переменная для определение уровня спелла
 var l
 
-var dice_array = [];
-
-//объявленные переменные для куков
+//объявленные переменные для куков спеллов
 var arr0 = [];
 var arr1 = [];
 var arr2 = [];
@@ -122,6 +120,26 @@ var arr6 = [];
 var arr7 = [];
 var arr8 = [];
 var arr9 = [];
+
+//Переменная с текущим набором кубов [d4,d6,d8,d10,d12,d20]
+var dice_array = [0,0,0,0,0,0];
+
+//объявленные переменные для куков дайсов
+var dice_arr0 = [];
+var dice_arr1 = [];
+var dice_arr2 = [];
+var dice_arr3 = [];
+var dice_arr4 = [];
+var dice_arr5 = [];
+
+//Cохраненные ролы
+var favouriteroll0
+var favouriteroll1
+var favouriteroll2
+var favouriteroll3
+var favouriteroll4
+var favouriteroll5
+
 
 var json_str = [];
 //Сердечки
@@ -287,21 +305,76 @@ function closeSet() {
 }
 
 function addDice(dice) {
-		dice_array.push(dice)
-		document.getElementById('roll').innerHTML = '<p onclick="roll()" ontouch="roll()">Роляем</p>';
-
+		dice_array[dice]+=1
+		document.getElementById('roll').innerHTML = '';
 		for (i = 0; i < dice_array.length; i++) {
-		document.getElementById('roll').innerHTML += '<img onclick="removeDice('+dice_array[i]+')" ontouch="removeDice('+dice[i]+')" src="img/d'+dice_array[i]+'.png"/>'
+		if (dice_array[i]>0)
+			{
+				if (i==0)
+					{
+						dice = 4;
+					}
+				else if (i==1)
+					{
+						dice = 6;
+					}
+				else if (i==2)
+					{
+						dice = 8;
+					}
+				else if (i==3)
+					{
+						dice = 10;
+					}
+				else if (i==4)
+					{
+						dice = 12;
+					}
+				else if (i==5)
+					{
+						dice = 20;
+					}
+			document.getElementById('roll').innerHTML += '<p><span>'+dice_array[i]+'</span><img onclick="removeDice('+i+')" ontouch="removeDice('+i+')" src="img/d'+dice+'.png"/>'
+			}
+
 		}
 }
 
 function removeDice(dice) {
-	document.getElementById('roll').innerHTML = '<p onclick="roll()" ontouch="roll()">Роляем</p>';
+	document.getElementById('roll').innerHTML = '';
 	//dice_array.indexOf(dice) искомый куб для удаления
 	//dice_array.splice(dice_array.indexOf(dice),1) начиная с позиции дайс эррей удалить один элемент
-	dice_array.splice(dice_array.indexOf(dice), 1)
-	for (i = 0; i < dice_array.length; i++) {
-		document.getElementById('roll').innerHTML += '<img onclick="removeDice('+dice_array[i]+')" ontouch="removeDice('+dice[i]+')" src="img/d'+dice_array[i]+'.png"/>'
+	//dice_array.splice(dice_array.indexOf(dice), 1)
+	dice_array[dice]-=1
+		for (i = 0; i < dice_array.length; i++) {
+		if (dice_array[i]>0)
+			{
+				if (i==0)
+					{
+						dice = 4;
+					}
+				else if (i==1)
+					{
+						dice = 6;
+					}
+				else if (i==2)
+					{
+						dice = 8;
+					}
+				else if (i==3)
+					{
+						dice = 10;
+					}
+				else if (i==4)
+					{
+						dice = 12;
+					}
+				else if (i==5)
+					{
+						dice = 20;
+					}
+			document.getElementById('roll').innerHTML += '<p><span>'+dice_array[i]+'</span><img onclick="removeDice('+i+')" ontouch="removeDice('+i+')" src="img/d'+dice+'.png"/>'
+			}
 		}
 }
 
@@ -309,15 +382,81 @@ function roll()
 {
 	var result = 0;
 	var result_string = '';
-	console.log(dice_array)
+//В массиве записывается количество дайсов. 4-ка в нулевом элементе, 6-ка в первом и т.д.
 	for (i=0; i<dice_array.length; i++) {
-       single_roll = Math.floor((Math.random() * dice_array[i]) + 1);	
-       result += single_roll	
-	   result_string += single_roll.toString()+'[d'+ dice_array[i] +'] '+', ';
+				if (i==0)
+					{
+						dice = 4;
+					}
+				else if (i==1)
+					{
+						dice = 6;
+					}
+				else if (i==2)
+					{
+						dice = 8;
+					}
+				else if (i==3)
+					{
+						dice = 10;
+					}
+				else if (i==4)
+					{
+						dice = 12;
+					}
+				else if (i==5)
+					{
+						dice = 20;
+					}
+		for (j=0; j<dice_array[i]; j++) 
+       	{
+       		single_roll = Math.floor((Math.random() * dice) + 1);	
+       		result += single_roll	
+	   		result_string += single_roll.toString()+'[d'+ dice +'] '+', ';
+	   	}
   	}
   	result_string += 'Суммарно ' + result;
   	document.getElementById('result').innerHTML += '<p color="#000000">' + result_string + '</p>\n'
 
+}
+
+function saveRoll() {
+ //Проверяем переменные пресетов dice_arr от 0 до 5. Находим среди них первый пустой и пушим туда элементы из текущего массиво по одному 
+ for (i=0; i<6; i++)
+ {
+ 	if (eval('dice_arr'+i).length == 0)
+ 	{
+ 		for (j=0; j<dice_array.length; j++) {
+ 		eval('dice_arr'+i).push(dice_array[j]);
+ 		}
+ 	 json_str = JSON.stringify(dice_array);
+	 createCookie('favouriteroll' + i, json_str, 365);
+ 		break
+ 	}
+ 
+ 	 
+ }
+
+}
+
+
+
+function loadRoll(preset) {
+	//Загружаем массив и бахаем
+	dice_array = [];
+	dice_array = eval('dice_arr'+preset);
+	document.getElementById('roll').innerHTML = '';
+	//Микрокастыль для перерисования роляемых дайсов
+	addDice(0);
+	removeDice(0);
+	 roll()
+}
+function deleteRoll() {
+console.log(dice_array);
+}
+
+function eraseLog() {
+document.getElementById('result').innerHTML ='';
 }
 
 function pageload() {
