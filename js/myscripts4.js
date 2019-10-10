@@ -453,25 +453,26 @@ for (i = 0; i < 6; i++) {
 	//Проверка, что в куках что-то есть.
 	if (str != "")
 	{
+		     if (i == 0) {
+			      dice_arr0 = str || [];
+			 } else if (n == 1) {
+			      dice_arr1 = str || [];
+			 } else if (n == 2) {
+			      dice_arr2 = str || [];
+			 } else if (n == 3) {
+			      dice_arr3 = str || [];
+			 } else if (n == 4) {
+			      dice_arr4 = str || [];
+			 } else if (n == 5) {
+			      dice_arr5 = str || [];
+			 }
     //Запихиваем в соотвествующий массив то, что достали из куков
     	for (j=0; j<str.length; j++)
     	{	
-    		 if (n == 0) {
-			      dice_arr0 = json_str || [];
-			 } else if (n == 1) {
-			      dice_arr1 = json_str || [];
-			 } else if (n == 2) {
-			      dice_arr2 = json_str || [];
-			 } else if (n == 3) {
-			      dice_arr3 = json_str || [];
-			 } else if (n == 4) {
-			      dice_arr4 = json_str || [];
-			 } else if (n == 5) {
-			      dice_arr5 = json_str || [];
-			 }
-    		if (json_str[j]>0)
+
+    		if (str[j]>0)
 			{
-			preset_string +=json_str[j]+'к'+dDice[j]+' ' 
+			preset_string +=str[j]+'к'+dDice[j]+' ' 
 			}
 
     	}
