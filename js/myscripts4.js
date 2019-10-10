@@ -448,22 +448,22 @@ for (i = 0; i < 6; i++) {
 	var preset_string = '';
 	preset_string +=i+1+'. ';
 	//Временная строка. Т.к. длина json_str без парса 13, а с парсом и вообще должна быть 6
-	str=JSON.parse(json_str)
+	str=JSON.parse(json_str);
 	
 	//Проверка, что в куках что-то есть.
 	if (str != "")
 	{
 		     if (i == 0) {
 			      dice_arr0 = str || [];
-			 } else if (n == 1) {
+			 } else if (i == 1) {
 			      dice_arr1 = str || [];
-			 } else if (n == 2) {
+			 } else if (i == 2) {
 			      dice_arr2 = str || [];
-			 } else if (n == 3) {
+			 } else if (i == 3) {
 			      dice_arr3 = str || [];
-			 } else if (n == 4) {
+			 } else if (i == 4) {
 			      dice_arr4 = str || [];
-			 } else if (n == 5) {
+			 } else if (i == 5) {
 			      dice_arr5 = str || [];
 			 }
     //Запихиваем в соотвествующий массив то, что достали из куков
