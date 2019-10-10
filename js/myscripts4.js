@@ -445,22 +445,23 @@ function pageload() {
 //Получения массива из куков для роллов
 for (i = 0; i < 6; i++) {
     json_str = getCookie('favouriteroll' + i);
-    console.log(json_str)
-//Проверка, что в куках что-то есть.
-if (json_str != "")
-{
+	var preset_string = '';
+	preset_string +=i+1+'. ';
+	//Проверка, что в куках что-то есть.
+	if (json_str != "")
+	{
     //Запихиваем в соотвествующий массив то, что достали из куков
-    for (j=0; j<json_str.length; j++)
-    {	
-    eval('dice_arr'+n).push(json_str)[j]
-    if (json_str[j]>0)
+    	for (j=0; j<json_str.length; j++)
+    	{	
+    		eval('dice_arr'+i).push(json_str)[j]
+    		if (json_str[j]>0)
 			{
 			preset_string +=json_str[j]+'к'+dDice[j]+' ' 
 			}
 
-    }
- document.getElementsByClassName('preset')[i].innerHTML = preset_string;
-}
+    	}
+ 	document.getElementsByClassName('preset')[i].innerHTML = preset_string;
+	}
 }
 
 //Получение массива для спеллов из куков
