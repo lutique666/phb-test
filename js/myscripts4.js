@@ -454,9 +454,9 @@ for (i = 0; i < 6; i++) {
 	if (str != "")
 	{
 		     if (i == 0) {
-			      dice_arr0 = str || [];
+			      dice_arr0 = str || [0, 8, 0, 0, 0, 0];
 			 } else if (i == 1) {
-			      dice_arr1 = str || [];
+			      dice_arr1 = str || [10, 0, 0, 0, 0, 0];
 			 } else if (i == 2) {
 			      dice_arr2 = str || [];
 			 } else if (i == 3) {
