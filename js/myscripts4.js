@@ -447,13 +447,28 @@ for (i = 0; i < 6; i++) {
     json_str = getCookie('favouriteroll' + i);
 	var preset_string = '';
 	preset_string +=i+1+'. ';
+	//Временная строка. Т.к. длина json_str без парса 13, а с парсом и вообще должна быть 6
+	str=JSON.parse(json_str)
+	
 	//Проверка, что в куках что-то есть.
-	if (json_str != "")
+	if (str != "")
 	{
     //Запихиваем в соотвествующий массив то, что достали из куков
-    	for (j=0; j<json_str.length; j++)
+    	for (j=0; j<str.length; j++)
     	{	
-    		eval('dice_arr'+i).push(json_str)[j]
+    		 if (n == 0) {
+			      dice_arr0 = json_str || [];
+			 } else if (n == 1) {
+			      dice_arr1 = json_str || [];
+			 } else if (n == 2) {
+			      dice_arr2 = json_str || [];
+			 } else if (n == 3) {
+			      dice_arr3 = json_str || [];
+			 } else if (n == 4) {
+			      dice_arr4 = json_str || [];
+			 } else if (n == 5) {
+			      dice_arr5 = json_str || [];
+			 }
     		if (json_str[j]>0)
 			{
 			preset_string +=json_str[j]+'к'+dDice[j]+' ' 
