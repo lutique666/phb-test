@@ -464,8 +464,9 @@ if (json_str != "")
       dice_array5 = JSON.parse(json_str) || [];
     } 
 }
+}
 
-  //Получение массива для спеллов из куков
+//Получение массива для спеллов из куков
   for (n = 0; n < 10; n++) {
     json_str = getCookie('favourite' + n);
 
