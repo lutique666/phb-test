@@ -445,7 +445,7 @@ function pageload() {
 //Получения массива из куков для роллов
 for (n = 0; n < 5; n++) {
     json_str = getCookie('favouriteroll' + n);
-
+    console.log(json_str)
 //Проверка, что в куках что-то есть.
 if (json_str != "")
 {
