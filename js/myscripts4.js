@@ -122,6 +122,7 @@ var arr8 = [];
 var arr9 = [];
 
 //Переменная с текущим набором кубов [d4,d6,d8,d10,d12,d20]
+var dDice = [4,6,8,10,12,20]
 var dice_array = [0,0,0,0,0,0];
 
 //объявленные переменные для куков дайсов
@@ -310,31 +311,7 @@ function addDice(dice) {
 		for (i = 0; i < dice_array.length; i++) {
 		if (dice_array[i]>0)
 			{
-				if (i==0)
-					{
-						dice = 4;
-					}
-				else if (i==1)
-					{
-						dice = 6;
-					}
-				else if (i==2)
-					{
-						dice = 8;
-					}
-				else if (i==3)
-					{
-						dice = 10;
-					}
-				else if (i==4)
-					{
-						dice = 12;
-					}
-				else if (i==5)
-					{
-						dice = 20;
-					}
-			document.getElementById('roll').innerHTML += '<p><span>'+dice_array[i]+'</span><img onclick="removeDice('+i+')" ontouch="removeDice('+i+')" src="img/d'+dice+'.png"/>'
+			document.getElementById('roll').innerHTML += '<p><span>'+dice_array[i]+'</span><img onclick="removeDice('+i+')" ontouch="removeDice('+i+')" src="img/d'+dDice[i]+'.png"/>'
 			}
 
 		}
@@ -349,31 +326,7 @@ function removeDice(dice) {
 		for (i = 0; i < dice_array.length; i++) {
 		if (dice_array[i]>0)
 			{
-				if (i==0)
-					{
-						dice = 4;
-					}
-				else if (i==1)
-					{
-						dice = 6;
-					}
-				else if (i==2)
-					{
-						dice = 8;
-					}
-				else if (i==3)
-					{
-						dice = 10;
-					}
-				else if (i==4)
-					{
-						dice = 12;
-					}
-				else if (i==5)
-					{
-						dice = 20;
-					}
-			document.getElementById('roll').innerHTML += '<p><span>'+dice_array[i]+'</span><img onclick="removeDice('+i+')" ontouch="removeDice('+i+')" src="img/d'+dice+'.png"/>'
+			document.getElementById('roll').innerHTML += '<p><span>'+dice_array[i]+'</span><img onclick="removeDice('+i+')" ontouch="removeDice('+i+')" src="img/d'+dDice[i]+'.png"/>'
 			}
 		}
 }
@@ -384,35 +337,11 @@ function roll()
 	var result_string = '';
 //В массиве записывается количество дайсов. 4-ка в нулевом элементе, 6-ка в первом и т.д.
 	for (i=0; i<dice_array.length; i++) {
-				if (i==0)
-					{
-						dice = 4;
-					}
-				else if (i==1)
-					{
-						dice = 6;
-					}
-				else if (i==2)
-					{
-						dice = 8;
-					}
-				else if (i==3)
-					{
-						dice = 10;
-					}
-				else if (i==4)
-					{
-						dice = 12;
-					}
-				else if (i==5)
-					{
-						dice = 20;
-					}
 		for (j=0; j<dice_array[i]; j++) 
        	{
-       		single_roll = Math.floor((Math.random() * dice) + 1);	
+       		single_roll = Math.floor((Math.random() * dDice[i]) + 1);	
        		result += single_roll	
-	   		result_string += single_roll.toString()+'[d'+ dice +'] '+', ';
+	   		result_string += single_roll.toString()+'[d'+ dDice[i] +'] '+', ';
 	   	}
   	}
   	result_string += 'Суммарно ' + result;
@@ -430,54 +359,12 @@ var preset_string = '';
  		preset_string +=i+1+'. ';
  		for (j=0; j<dice_array.length; j++) {
  		eval('dice_arr'+i).push(dice_array[j]);
-				//Формирование строки, которая уйдет в пресет. Если элемент не пустой в строку добавится количество дайсов и кDice
+		//Формирование строки, которая уйдет в пресет. Если элемент не пустой в строку добавится количество дайсов и кDice
+			if (dice_array[j]>0)
+			{
+			preset_string +=dice_array[j]+'к'+dDice[j]+' ' 
+			}	
 
-				if (j==0)
-					{
-						if (dice_array[j]>0)
-							{
-							preset_string +=dice_array[j]+'к4 ' 
-							}
-						
-					}
-				else if (j==1)
-					{
-							if (dice_array[j]>0)
-							{
-							preset_string +=dice_array[j]+'к6 ' 
-							}
-					}
-				else if (j==2)
-					{
-							if (dice_array[j]>0)
-							{
-							preset_string +=dice_array[j]+'к8 ' 
-							}
-					}
-				else if (j==3)
-					{
-							if (dice_array[j]>0)
-							{
-							preset_string +=dice_array[j]+'к10 ' 
-							}
-
-					}
-				else if (j==4)
-					{
-							if (dice_array[j]>0)
-							{
-							preset_string +=dice_array[j]+'к12 ' 
-							}
-
-					}
-				else if (j==5)
-					{
-							if (dice_array[j]>0)
-							{
-							preset_string +=dice_array[j]+'к20 ' 
-							}
-
-					}
  		}
  	document.getElementsByClassName('preset')[i].innerHTML = preset_string;
  	json_str = JSON.stringify(dice_array);
@@ -505,10 +392,12 @@ function loadRoll(preset) {
 	 roll()
 }
 function deleteRoll() {
+//Выбираем пресет для удаления и делаем -1 для соотвествия массиву.
 var preset = Number(prompt('Выберите пресет для удаления?', 1)-1);
 //Зануляем длину массива, что приводит его в виду пустого массива [];
 eval('dice_arr'+preset).length=0;
 console.log(eval('dice_arr'+preset));
+//Прибавляем 1, чтобы нормально отрисовывалось
 document.getElementsByClassName('preset')[preset].innerHTML = (preset+1)+'. Пусто';
 }
 
@@ -553,8 +442,30 @@ function pageload() {
   }
 
 
+//Получения массива из куков для роллов
+for (n = 0; n < 5; n++) {
+    json_str = getCookie('favouriteroll' + n);
 
-  //Получение массива из куков
+//Проверка, что в куках что-то есть.
+if (json_str != "")
+{
+    //Охуительный кастыль, потому что eval('arr'+n)=JSON.parse(json_str) не работает ни с равно, ни с конкатом
+    if (n == 0) {
+      dice_array0 = JSON.parse(json_str) || [];
+    } else if (n == 1) {
+      dice_array1 = JSON.parse(json_str) || [];
+    } else if (n == 2) {
+      dice_array2 = JSON.parse(json_str) || [];
+    } else if (n == 3) {
+      dice_array3 = JSON.parse(json_str) || [];
+    } else if (n == 4) {
+      dice_array4 = JSON.parse(json_str) || [];
+    } else if (n == 5) {
+      dice_array5 = JSON.parse(json_str) || [];
+    } 
+}
+
+  //Получение массива для спеллов из куков
   for (n = 0; n < 10; n++) {
     json_str = getCookie('favourite' + n);
 
