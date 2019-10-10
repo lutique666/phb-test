@@ -449,20 +449,12 @@ for (n = 0; n < 5; n++) {
 //Проверка, что в куках что-то есть.
 if (json_str != "")
 {
-    //Охуительный кастыль, потому что eval('arr'+n)=JSON.parse(json_str) не работает ни с равно, ни с конкатом
-    if (n == 0) {
-      dice_array0 = JSON.parse(json_str) || [];
-    } else if (n == 1) {
-      dice_array1 = JSON.parse(json_str) || [];
-    } else if (n == 2) {
-      dice_array2 = JSON.parse(json_str) || [];
-    } else if (n == 3) {
-      dice_array3 = JSON.parse(json_str) || [];
-    } else if (n == 4) {
-      dice_array4 = JSON.parse(json_str) || [];
-    } else if (n == 5) {
-      dice_array5 = JSON.parse(json_str) || [];
-    } 
+    
+    for (i=0; i<json_str.length; i++)
+    {	
+    eval('dice_array'+n).push(json_str)[i]
+    }
+ 
 }
 }
 
