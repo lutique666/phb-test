@@ -443,18 +443,23 @@ function pageload() {
 
 
 //Получения массива из куков для роллов
-for (n = 0; n < 5; n++) {
-    json_str = getCookie('favouriteroll' + n);
+for (i = 0; i < 6; i++) {
+    json_str = getCookie('favouriteroll' + i);
     console.log(json_str)
 //Проверка, что в куках что-то есть.
 if (json_str != "")
 {
-    
-    for (i=0; i<json_str.length; i++)
+    //Запихиваем в соотвествующий массив то, что достали из куков
+    for (j=0; j<json_str.length; j++)
     {	
-    eval('dice_array'+n).push(json_str)[i]
+    eval('dice_arr'+n).push(json_str)[j]
+    if (json_str[j]>0)
+			{
+			preset_string +=json_str[j]+'к'+dDice[j]+' ' 
+			}
+
     }
- 
+ document.getElementsByClassName('preset')[i].innerHTML = preset_string;
 }
 }
 
