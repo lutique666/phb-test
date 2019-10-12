@@ -396,7 +396,8 @@ function deleteRoll() {
 var preset = Number(prompt('Выберите пресет для удаления?', 1)-1);
 //Зануляем длину массива, что приводит его в виду пустого массива [];
 eval('dice_arr'+preset).length=0;
-console.log(eval('dice_arr'+preset));
+json_str = JSON.stringify(eval('dice_arr'+preset));
+createCookie('favouriteroll' + preset, json_str, 365);
 //Прибавляем 1, чтобы нормально отрисовывалось
 document.getElementsByClassName('preset')[preset].innerHTML = (preset+1)+'. Пусто';
 }
@@ -454,9 +455,9 @@ for (i = 0; i < 6; i++) {
 	if (str != "")
 	{
 		     if (i == 0) {
-			      dice_arr0 = str || [0, 8, 0, 0, 0, 0];
+			      dice_arr0 = str || [];
 			 } else if (i == 1) {
-			      dice_arr1 = str || [10, 0, 0, 0, 0, 0];
+			      dice_arr1 = str || [];
 			 } else if (i == 2) {
 			      dice_arr2 = str || [];
 			 } else if (i == 3) {
